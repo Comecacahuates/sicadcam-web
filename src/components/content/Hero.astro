@@ -1,0 +1,82 @@
+---
+import Container from '../layout/Container.astro';
+import Button from '../ui/Button.astro';
+import ButtonGroup from '../ui/ButtonGroup.astro';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  primaryCta?: {
+    text: string;
+    href: string;
+  };
+  secondaryCta?: {
+    text: string;
+    href: string;
+  };
+  background?: 'blue' | 'dark' | 'gradient';
+  class?: string;
+}
+
+const { 
+  title,
+  subtitle,
+  description,
+  primaryCta,
+  secondaryCta,
+  background = 'blue',
+  class: className = ''
+} = Astro.props;
+
+const backgroundClasses = {
+  blue: 'bg-blue-600 text-white',
+  dark: 'bg-slate-900 text-white',
+  gradient: 'bg-gradient-to-br from-blue-600 to-blue-800 text-white'
+};
+---
+
+<section class={`${backgroundClasses[background]} ${className}`}>
+  <Container size="lg" padding="xl">
+    <div class="text-center max-w-4xl mx-auto">
+      {subtitle && (
+        <p class="text-blue-200 text-lg font-medium mb-4">
+          {subtitle}
+        </p>
+      )}
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        {title}
+      </h1>
+      
+      {description && (
+        <p class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+          {description}
+        </p>
+      )}
+      
+      {(primaryCta || secondaryCta) && (
+        <ButtonGroup alignment="center">
+          {primaryCta && (
+            <Button 
+              href={primaryCta.href} 
+              variant="white" 
+              size="lg"
+            >
+              {primaryCta.text}
+            </Button>
+          )}
+          {secondaryCta && (
+            <Button 
+              href={secondaryCta.href} 
+              variant="white-outline" 
+              size="lg"
+            >
+              {secondaryCta.text}
+            </Button>
+          )}
+        </ButtonGroup>
+      )}
+    </div>
+  </Container>
+</section>

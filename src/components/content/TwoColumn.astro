@@ -1,0 +1,63 @@
+---
+export interface Props {
+  imagePosition?: 'left' | 'right';
+  imageSrc?: string;
+  imageAlt?: string;
+  imageClass?: string;
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
+  alignItems?: 'start' | 'center' | 'end';
+  class?: string;
+}
+
+const { 
+  imagePosition = 'right',
+  imageSrc,
+  imageAlt = '',
+  imageClass = '',
+  gap = 'lg',
+  alignItems = 'center',
+  class: className = ''
+} = Astro.props;
+
+const gapClasses = {
+  sm: 'gap-6',
+  md: 'gap-8',
+  lg: 'gap-12',
+  xl: 'gap-16'
+};
+
+const alignClasses = {
+  start: 'items-start',
+  center: 'items-center',
+  end: 'items-end'
+};
+
+const gridClass = imagePosition === 'left' 
+  ? 'grid grid-cols-1 lg:grid-cols-2' 
+  : 'grid grid-cols-1 lg:grid-cols-2';
+
+const contentOrder = imagePosition === 'left' ? 'lg:order-2' : '';
+const imageOrder = imagePosition === 'left' ? 'lg:order-1' : '';
+---
+
+<div class={`${gridClass} ${gapClasses[gap]} ${alignClasses[alignItems]} ${className}`}>
+  <!-- Content Column -->
+  <div class={contentOrder}>
+    <slot name="content" />
+  </div>
+  
+  <!-- Image Column -->
+  <div class={imageOrder}>
+    {imageSrc ? (
+      <div class={`bg-slate-200 rounded-lg aspect-video flex items-center justify-center ${imageClass}`}>
+        <img 
+          src={imageSrc}
+          alt={imageAlt}
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </div>
+    ) : (
+      <slot name="image" />
+    )}
+  </div>
+</div>
