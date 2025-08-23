@@ -1,0 +1,81 @@
+---
+import Container from './Container.astro';
+
+interface Props {
+  backgroundImage?: string;
+  height?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  overlay?: 'none' | 'light' | 'dark' | 'blue';
+  overlayOpacity?: '20' | '40' | '60' | '80';
+  position?: 'center' | 'top' | 'bottom' | 'left' | 'right';
+  attachment?: 'scroll' | 'fixed';
+  withContent?: boolean;
+  containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  class?: string;
+}
+
+const { 
+  backgroundImage,
+  height = 'md',
+  overlay = 'dark',
+  overlayOpacity = '40',
+  position = 'center',
+  attachment = 'scroll',
+  withContent = false,
+  containerSize = 'lg',
+  class: className = ''
+} = Astro.props;
+
+const heightClasses = {
+  sm: 'h-32 md:h-40',
+  md: 'h-48 md:h-64',
+  lg: 'h-64 md:h-80',
+  xl: 'h-80 md:h-96',
+  '2xl': 'h-96 md:h-screen'
+};
+
+const overlayStyles = {
+  none: '',
+  light: `background-color: rgba(255, 255, 255, ${parseInt(overlayOpacity) / 100});`,
+  dark: `background-color: rgba(0, 0, 0, ${parseInt(overlayOpacity) / 100});`,
+  blue: `background-color: rgba(30, 58, 138, ${parseInt(overlayOpacity) / 100});` // blue-900 in rgba
+};
+
+const positionClasses = {
+  center: 'bg-center',
+  top: 'bg-top',
+  bottom: 'bg-bottom',
+  left: 'bg-left',
+  right: 'bg-right'
+};
+
+const attachmentClasses = {
+  scroll: '',
+  fixed: 'bg-fixed'
+};
+
+const backgroundStyle = backgroundImage 
+  ? `background-image: url('${backgroundImage}');`
+  : '';
+---
+
+<section 
+  class={`relative bg-cover bg-no-repeat ${heightClasses[height]} ${positionClasses[position]} ${attachmentClasses[attachment]} ${className}`}
+  style={backgroundStyle}
+>
+  <!-- Overlay -->
+  {overlay !== 'none' && (
+    <div 
+      class="absolute inset-0" 
+      style={overlayStyles[overlay]}
+    ></div>
+  )}
+  
+  <!-- Content (optional) -->
+  {withContent && (
+    <div class="relative z-10 h-full flex items-center justify-center text-white">
+      <Container size={containerSize} padding="none" class="text-center">
+        <slot />
+      </Container>
+    </div>
+  )}
+</section>

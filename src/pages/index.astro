@@ -1,17 +1,18 @@
 ---
-import Layout from '../components/layout/Layout.astro';
-import Hero from '../components/content/Hero.astro';
-import TwoColumn from '../components/content/TwoColumn.astro';
-import Section from '../components/layout/Section.astro';
-import CardGrid from '../components/layout/CardGrid.astro';
-import Card from '../components/ui/Card.astro';
-import StatCard from '../components/ui/StatCard.astro';
-import FeatureCard from '../components/ui/FeatureCard.astro';
-import Button from '../components/ui/Button.astro';
-import ButtonGroup from '../components/ui/ButtonGroup.astro';
-import Text from '../components/ui/Text.astro';
-import Heading from '../components/ui/Heading.astro';
-import '../styles/global.css';
+import Layout from "../components/layout/Layout.astro";
+import Hero from "../components/content/Hero.astro";
+import TwoColumn from "../components/content/TwoColumn.astro";
+import Section from "../components/layout/Section.astro";
+import SectionSeparator from "../components/layout/SectionSeparator.astro";
+import CardGrid from "../components/layout/CardGrid.astro";
+import Card from "../components/ui/Card.astro";
+import StatCard from "../components/ui/StatCard.astro";
+import FeatureCard from "../components/ui/FeatureCard.astro";
+import Button from "../components/ui/Button.astro";
+import ButtonGroup from "../components/ui/ButtonGroup.astro";
+import Text from "../components/ui/Text.astro";
+import Heading from "../components/ui/Heading.astro";
+import "../styles/global.css";
 ---
 
 <Layout title="SICADCAM - Servicios de Ingeniería CAD-CAM">
@@ -22,11 +23,11 @@ import '../styles/global.css';
     description="Fusionamos décadas de experiencia en ingeniería, diseño y fabricación digital para ofrecer soluciones innovadoras y personalizadas."
     primaryCta={{
       text: "Explorar Servicios",
-      href: "#servicios"
+      href: "#servicios",
     }}
     secondaryCta={{
       text: "Contactar",
-      href: "/contacto"
+      href: "/contacto",
     }}
     background="gradient"
   />
@@ -43,11 +44,13 @@ import '../styles/global.css';
           Acerca de Nosotros
         </Heading>
         <Text variant="lead" color="muted" class="mb-6">
-          En SICADCAM, fusionamos más de tres décadas de experiencia en ingeniería, diseño y fabricación digital para ofrecer soluciones innovadoras y personalizadas. Nuestro equipo, compuesto por expertos con profunda trayectoria y conocimiento en sistemas CAD/CAM, está comprometido con la excelencia y la vanguardia tecnológica.
+          En SICADCAM, fusionamos más de tres décadas de experiencia en
+          ingeniería, diseño y fabricación digital para ofrecer soluciones
+          innovadoras y personalizadas. Nuestro equipo, compuesto por expertos
+          con profunda trayectoria y conocimiento en sistemas CAD/CAM, está
+          comprometido con la excelencia y la vanguardia tecnológica.
         </Text>
-        <Button href="/acerca-de" variant="primary">
-          Conocer más
-        </Button>
+        <Button href="/acerca-de" variant="primary"> Conocer más </Button>
       </div>
     </TwoColumn>
   </Section>
@@ -59,7 +62,8 @@ import '../styles/global.css';
         Nuestra Trayectoria y Experiencia
       </Heading>
       <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Con más de tres décadas de experiencia en ingeniería y manufactura, nos hemos establecido como líderes en la industria CAD-CAM.
+        Con más de tres décadas de experiencia en ingeniería y manufactura, nos
+        hemos establecido como líderes en la industria CAD-CAM.
       </Text>
     </div>
 
@@ -84,14 +88,31 @@ import '../styles/global.css';
     </CardGrid>
   </Section>
 
+  <!-- Section Separator -->
+  <SectionSeparator
+    backgroundImage="https://placehold.co/1920x600?text=CAD+CAM+Workshop"
+    height="lg"
+    overlay="dark"
+    overlayOpacity="40"
+    position="center"
+    withContent={true}
+  >
+    <Heading as="h2" variant="section" color="white" class="mb-4">
+      Tecnología de Vanguardia
+    </Heading>
+    <Text variant="lead" color="white" class="max-w-2xl mx-auto">
+      Equipos de fabricación digital de última generación para proyectos de alta
+      precisión
+    </Text>
+  </SectionSeparator>
+
   <!-- Services Section -->
   <Section background="white" padding="lg" id="servicios">
     <div class="text-center mb-12">
-      <Heading as="h2" variant="section" class="mb-4">
-        Nuestra Oferta
-      </Heading>
+      <Heading as="h2" variant="section" class="mb-4"> Nuestra Oferta </Heading>
       <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la producción y la capacitación.
+        Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la
+        producción y la capacitación.
       </Text>
     </div>
 
@@ -138,15 +159,16 @@ import '../styles/global.css';
           Nuestro Compromiso
         </Heading>
         <Text variant="lead" color="white" class="mb-6 text-blue-100">
-          La combinación de nuestra profunda experiencia práctica en ingeniería y fabricación nos permite ofrecer soluciones integrales, desde el concepto y el diseño, hasta la producción y la capacitación.
+          La combinación de nuestra profunda experiencia práctica en ingeniería
+          y fabricación nos permite ofrecer soluciones integrales, desde el
+          concepto y el diseño, hasta la producción y la capacitación.
         </Text>
         <Text variant="body" color="white" class="mb-8 text-blue-200">
-          Estamos aquí para apoyar a su empresa en cada etapa de sus proyectos de ingeniería y fabricación digital, con un compromiso inquebrantable con la calidad y la innovación.
+          Estamos aquí para apoyar a su empresa en cada etapa de sus proyectos
+          de ingeniería y fabricación digital, con un compromiso inquebrantable
+          con la calidad y la innovación.
         </Text>
-        <Button
-          href="/contacto"
-          variant="white-outline"
-        >
+        <Button href="/contacto" variant="white-outline">
           Contactar Ahora
         </Button>
       </div>
@@ -159,14 +181,23 @@ import '../styles/global.css';
       <Heading as="h2" variant="section" color="white" class="mb-4">
         ¿Listo para comenzar su proyecto?
       </Heading>
-      <Text variant="lead" color="white" class="mb-8 max-w-2xl mx-auto text-slate-300">
-        Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas del concepto a la realidad.
+      <Text
+        variant="lead"
+        color="white"
+        class="mb-8 max-w-2xl mx-auto text-slate-300"
+      >
+        Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas
+        del concepto a la realidad.
       </Text>
       <ButtonGroup alignment="center">
         <Button href="/contacto" variant="primary" size="lg">
           Contactar
         </Button>
-        <Button href="/cursos-de-capacitacion" variant="white-outline" size="lg">
+        <Button
+          href="/cursos-de-capacitacion"
+          variant="white-outline"
+          size="lg"
+        >
           Ver Cursos
         </Button>
       </ButtonGroup>
