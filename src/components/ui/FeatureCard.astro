@@ -1,0 +1,59 @@
+---
+import Card from './Card.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+import Button from './Button.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  hover?: boolean;
+  class?: string;
+}
+
+const { 
+  title,
+  description,
+  imageSrc,
+  imageAlt = '',
+  buttonText,
+  buttonHref,
+  buttonVariant = 'outline',
+  hover = true,
+  class: className = ''
+} = Astro.props;
+---
+
+<Card hover={hover} class={`text-center ${className}`}>
+  {imageSrc && (
+    <div class="mb-6">
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        class="w-full h-48 object-cover rounded-lg mb-4"
+      />
+    </div>
+  )}
+  
+  <Heading as="h3" variant="card" class="mb-3">
+    {title}
+  </Heading>
+  
+  <Text variant="body" color="muted" class="mb-6">
+    {description}
+  </Text>
+  
+  {buttonText && buttonHref && (
+    <Button href={buttonHref} variant={buttonVariant} class="w-full">
+      {buttonText}
+    </Button>
+  )}
+  
+  <!-- Allow custom content via slot -->
+  <slot />
+</Card>

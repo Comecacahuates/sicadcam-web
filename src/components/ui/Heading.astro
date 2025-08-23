@@ -1,0 +1,36 @@
+---
+export interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  variant?: 'hero' | 'section' | 'subsection' | 'card' | 'small';
+  color?: 'default' | 'white' | 'blue' | 'muted';
+  class?: string;
+}
+
+const { 
+  as: Tag = 'h2',
+  variant = 'section',
+  color = 'default',
+  class: className = ''
+} = Astro.props;
+
+const variantClasses = {
+  hero: 'text-4xl md:text-5xl lg:text-6xl font-bold',
+  section: 'text-3xl md:text-4xl font-bold',
+  subsection: 'text-2xl md:text-3xl font-bold',
+  card: 'text-xl font-semibold',
+  small: 'text-lg font-semibold'
+};
+
+const colorClasses = {
+  default: 'text-slate-900',
+  white: 'text-white',
+  blue: 'text-blue-600',
+  muted: 'text-slate-600'
+};
+
+const classes = `${variantClasses[variant]} ${colorClasses[color]} ${className}`;
+---
+
+<Tag class={classes}>
+  <slot />
+</Tag>
