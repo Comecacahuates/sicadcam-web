@@ -1,0 +1,31 @@
+---
+import Container from './Container.astro';
+
+export interface Props {
+  background?: 'white' | 'gray' | 'blue' | 'dark' | 'transparent';
+  containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const { 
+  background = 'transparent',
+  containerSize = 'lg',
+  padding = 'md',
+  class: className = '' 
+} = Astro.props;
+
+const backgroundClasses = {
+  white: 'bg-white',
+  gray: 'bg-slate-100',
+  blue: 'bg-blue-600 text-white',
+  dark: 'bg-slate-900 text-white',
+  transparent: ''
+};
+---
+
+<section class={`${backgroundClasses[background]} ${className}`}>
+  <Container size={containerSize} padding={padding}>
+    <slot />
+  </Container>
+</section>
