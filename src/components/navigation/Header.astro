@@ -1,0 +1,162 @@
+---
+// Header component with navigation
+---
+
+<header class="bg-white shadow-sm border-b border-slate-200">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center">
+          <span class="text-2xl font-bold text-blue-600">SICADCAM</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="/" class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+            Inicio
+          </a>
+          <div class="relative group">
+            <a href="/soluciones-de-software-cad-cam" class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors flex items-center">
+              Software CAD/CAM
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <!-- Dropdown menu -->
+            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="/soluciones-de-software-cad-cam/rhinoceros" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600">
+                  Rhinoceros
+                </a>
+                <a href="/soluciones-de-software-cad-cam/grasshopper" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600">
+                  Grasshopper
+                </a>
+                <a href="/soluciones-de-software-cad-cam/rhinocam" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600">
+                  RhinoCAM
+                </a>
+                <a href="/soluciones-de-software-cad-cam/mesh2surface" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600">
+                  Mesh2Surface
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="/servicios-de-fabricacion-digital" class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+            Servicios
+          </a>
+          <a href="/cursos-de-capacitacion" class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+            Cursos
+          </a>
+          <a href="/contacto" class="text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+            Contacto
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button 
+          type="button" 
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Abrir menú principal</span>
+          <!-- Menu icon -->
+          <svg class="menu-icon h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close icon -->
+          <svg class="close-icon h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-200">
+        <a href="/" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+          Inicio
+        </a>
+        <div class="space-y-1">
+          <a href="/soluciones-de-software-cad-cam" class="mobile-dropdown-button w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors flex items-center justify-between">
+            Software CAD/CAM
+            <svg class="h-4 w-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <div class="mobile-dropdown hidden pl-4 space-y-1">
+            <a href="/soluciones-de-software-cad-cam/rhinoceros" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+              Rhinoceros
+            </a>
+            <a href="/soluciones-de-software-cad-cam/grasshopper" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+              Grasshopper
+            </a>
+            <a href="/soluciones-de-software-cad-cam/rhinocam" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+              RhinoCAM
+            </a>
+            <a href="/soluciones-de-software-cad-cam/mesh2surface" class="block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+              Mesh2Surface
+            </a>
+          </div>
+        </div>
+        <a href="/servicios-de-fabricacion-digital" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+          Servicios
+        </a>
+        <a href="/cursos-de-capacitacion" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+          Cursos
+        </a>
+        <a href="/contacto" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    const mobileDropdownButton = document.querySelector('.mobile-dropdown-button');
+    const mobileDropdown = document.querySelector('.mobile-dropdown');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+      });
+    }
+
+    // Mobile dropdown toggle
+    if (mobileDropdownButton && mobileDropdown) {
+      mobileDropdownButton.addEventListener('click', function() {
+        const isOpen = !mobileDropdown.classList.contains('hidden');
+        const arrow = mobileDropdownButton.querySelector('svg');
+        
+        if (isOpen) {
+          mobileDropdown.classList.add('hidden');
+          arrow.classList.remove('rotate-180');
+        } else {
+          mobileDropdown.classList.remove('hidden');
+          arrow.classList.add('rotate-180');
+        }
+      });
+    }
+  });
+</script>
