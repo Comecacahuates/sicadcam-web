@@ -1,0 +1,178 @@
+---
+import Layout from "../../components/layout/Layout.astro";
+import Section from "../../components/layout/Section.astro";
+import CardGrid from "../../components/layout/CardGrid.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import FeatureList from "../../components/ui/FeatureList.astro";
+import HighlightBox from "../../components/ui/HighlightBox.astro";
+import FeatureTimeline from "../../components/ui/FeatureTimeline.astro";
+import Text from "../../components/ui/Text.astro";
+import Heading from "../../components/ui/Heading.astro";
+import "../../styles/global.css";
+
+// Features data
+const features = [
+  {
+    title: "Modelado de Formas Libres",
+    description: "Cree geometrías complejas y orgánicas con precisión matemática",
+    iconColor: "blue" as const,
+    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+  },
+  {
+    title: "Compatibilidad Universal",
+    description: "Importa y exporta más de 30 formatos de archivo diferentes",
+    iconColor: "green" as const,
+    iconPath: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+  },
+  {
+    title: "Análisis y Validación",
+    description: "Herramientas integradas para análisis de geometría y validación",
+    iconColor: "purple" as const,
+    iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+  },
+  {
+    title: "Renderizado Integrado",
+    description: "Visualización fotorrealista con materiales y luces avanzadas",
+    iconColor: "yellow" as const,
+    iconPath: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+  },
+  {
+    title: "Scripting y Automatización",
+    description: "Python, C# y VB.NET para automatizar tareas repetitivas",
+    iconColor: "red" as const,
+    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+  },
+  {
+    title: "Multiplataforma",
+    description: "Disponible para Windows y Mac con la misma funcionalidad",
+    iconColor: "indigo" as const,
+    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+  }
+];
+---
+
+<Layout
+  title="Rhinoceros Features Layout Examples - SICADCAM"
+  description="Different layout options for displaying Rhinoceros features"
+>
+  <!-- Original Feature Cards (Current) -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Opción 1: Feature Cards (Actual)
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        El diseño actual con tarjetas completas
+      </Text>
+    </div>
+
+    <CardGrid columns="3" breakpoints={{ md: "2", lg: "3" }}>
+      {features.map((feature) => (
+        <FeatureCard
+          title={feature.title}
+          description={feature.description}
+          iconColor={feature.iconColor}
+          iconPath={feature.iconPath}
+        />
+      ))}
+    </CardGrid>
+  </Section>
+
+  <!-- Feature List Alternative -->
+  <Section background="gray">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Opción 2: Feature List (Recomendado)
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Lista limpia con iconos y contenido alineado - más ligero y profesional
+      </Text>
+    </div>
+
+    <FeatureList features={features} columns="2" />
+  </Section>
+
+  <!-- Highlight Boxes Alternative -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Opción 3: Highlight Boxes
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Cajas sutiles con diferentes variantes de estilo
+      </Text>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {features.map((feature, index) => (
+        <HighlightBox
+          title={feature.title}
+          description={feature.description}
+          iconColor={feature.iconColor}
+          iconPath={feature.iconPath}
+          variant={index % 3 === 0 ? "bordered" : index % 3 === 1 ? "subtle" : "default"}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <!-- Timeline Alternative -->
+  <Section background="gray">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Opción 4: Feature Timeline
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Diseño tipo timeline - moderno y visualmente atractivo
+      </Text>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <FeatureTimeline features={features} />
+    </div>
+  </Section>
+
+  <!-- Simple List (Minimal) -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Opción 5: Lista Simple (Minimalista)
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Enfoque completamente minimalista sin bordes ni fondos
+      </Text>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {features.map((feature) => (
+          <div class="flex items-start space-x-4">
+            <div class={`w-8 h-8 text-${feature.iconColor}-600 flex-shrink-0 mt-1`}>
+              <svg
+                class="w-full h-full"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d={feature.iconPath}
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <Heading as="h3" variant="card" class="mb-2 text-gray-900">
+                {feature.title}
+              </Heading>
+              <Text variant="body" color="muted">
+                {feature.description}
+              </Text>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+</Layout>

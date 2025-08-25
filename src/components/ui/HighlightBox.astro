@@ -1,0 +1,67 @@
+---
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  iconColor?: 'blue' | 'green' | 'purple' | 'yellow' | 'red' | 'indigo';
+  iconPath?: string;
+  variant?: 'default' | 'subtle' | 'bordered';
+  class?: string;
+}
+
+const { 
+  title, 
+  description, 
+  iconColor = 'blue', 
+  iconPath,
+  variant = 'default',
+  class: className = '' 
+} = Astro.props;
+
+const colorClasses = {
+  blue: 'text-blue-600',
+  green: 'text-green-600',
+  purple: 'text-purple-600',
+  yellow: 'text-yellow-600',
+  red: 'text-red-600',
+  indigo: 'text-indigo-600',
+};
+
+const variantClasses = {
+  default: 'bg-white border border-gray-200 hover:border-gray-300',
+  subtle: 'bg-gray-50 hover:bg-gray-100',
+  bordered: 'border-l-4 border-l-blue-500 bg-blue-50/30 hover:bg-blue-50/50',
+};
+---
+
+<div class={`p-6 rounded-lg transition-all duration-200 ${variantClasses[variant]} ${className}`}>
+  <div class="flex items-start space-x-4">
+    {iconPath && (
+      <div class="flex-shrink-0">
+        <svg
+          class={`w-6 h-6 ${colorClasses[iconColor]} mt-1`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d={iconPath}
+          ></path>
+        </svg>
+      </div>
+    )}
+    <div class="flex-1">
+      <Heading as="h3" variant="card" class="mb-3 text-gray-900">
+        {title}
+      </Heading>
+      <Text variant="body" color="muted" class="leading-relaxed">
+        {description}
+      </Text>
+    </div>
+  </div>
+</div>
