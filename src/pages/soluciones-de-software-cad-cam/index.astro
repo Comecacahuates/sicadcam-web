@@ -1,0 +1,319 @@
+---
+import Layout from "../../components/layout/Layout.astro";
+import PageHeader from "../../components/content/PageHeader.astro";
+import TwoColumn from "../../components/content/TwoColumn.astro";
+import Section from "../../components/layout/Section.astro";
+import SectionSeparator from "../../components/layout/SectionSeparator.astro";
+import CardGrid from "../../components/layout/CardGrid.astro";
+import IconGrid from "../../components/layout/IconGrid.astro";
+import FeatureCard from "../../components/ui/FeatureCard.astro";
+import StatCard from "../../components/ui/StatCard.astro";
+import IconItem from "../../components/ui/IconItem.astro";
+import Button from "../../components/ui/Button.astro";
+import ButtonGroup from "../../components/ui/ButtonGroup.astro";
+import Text from "../../components/ui/Text.astro";
+import Heading from "../../components/ui/Heading.astro";
+import "../../styles/global.css";
+---
+
+<Layout
+  title="Soluciones de Software CAD/CAM - SICADCAM"
+  description="Herramientas de software CAD/CAM esenciales: Rhinoceros, Grasshopper, RhinoCAM y Mesh2Surface. Llevamos sus proyectos del concepto a la realidad."
+>
+  <!-- Page Header -->
+  <PageHeader
+    title="Soluciones de Software CAD/CAM"
+    subtitle="Herramientas Profesionales"
+    description="Ofrecemos software CAD/CAM esencial para llevar sus proyectos de diseño y fabricación digital del concepto a la realidad, con máxima eficiencia y precisión."
+    breadcrumbs={[{ text: "Inicio", href: "/" }, { text: "Software CAD/CAM" }]}
+    primaryCta={{
+      text: "Ver Todos los Software",
+      href: "#software",
+    }}
+    secondaryCta={{
+      text: "Contactar Ventas",
+      href: "/contacto",
+    }}
+    background="blue"
+  />
+
+  <!-- Software Overview Stats -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Software Líder en la Industria
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Más de dos décadas distribuyendo y capacitando en las mejores
+        herramientas CAD/CAM del mercado
+      </Text>
+    </div>
+
+    <CardGrid columns="4" breakpoints={{ md: "2", lg: "4" }}>
+      <StatCard
+        stat="20+"
+        title="Años Distribuyendo"
+        description="Distribuidores oficiales desde 2002"
+        statColor="blue"
+      />
+
+      <StatCard
+        stat="1000+"
+        title="Profesionales Capacitados"
+        description="Usuarios entrenados en nuestros cursos"
+        statColor="green"
+      />
+
+      <StatCard
+        stat="4"
+        title="Software Especializado"
+        description="Herramientas complementarias integradas"
+        statColor="purple"
+      />
+
+      <StatCard
+        stat="24/7"
+        title="Soporte Técnico"
+        description="Asistencia continua para usuarios"
+        statColor="orange"
+      />
+    </CardGrid>
+  </Section>
+
+  <!-- Rhinoceros Section -->
+  <Section background="gray" id="software">
+    <TwoColumn
+      imagePosition="right"
+      imageSrc="https://placehold.co/600x400?text=Rhinoceros+3D"
+      imageAlt="Rhinoceros 3D Software"
+    >
+      <div slot="content">
+        <Heading as="h2" variant="section" class="mb-6"> Rhinoceros </Heading>
+        <Text variant="lead" color="muted" class="mb-6">
+          Rhinoceros es el software líder para el modelado 3D de formas libres y
+          superficies complejas, ideal para profesionales de arquitectura,
+          diseño industrial, diseño automotriz, joyería y más.
+        </Text>
+        <Text variant="body" color="muted" class="mb-8">
+          Permite crear geometrías precisas para cualquier proyecto, desde
+          conceptos iniciales hasta modelos de producción listos para
+          fabricación.
+        </Text>
+        <ButtonGroup alignment="start">
+          <Button
+            href="/soluciones-de-software-cad-cam/rhinoceros"
+            variant="primary"
+          >
+            Descubre Rhinoceros
+          </Button>
+          <Button href="/contacto" variant="outline"> Solicitar Demo </Button>
+        </ButtonGroup>
+      </div>
+    </TwoColumn>
+  </Section>
+
+  <!-- Grasshopper Section -->
+  <Section background="white">
+    <TwoColumn
+      imagePosition="left"
+      imageSrc="https://placehold.co/600x400?text=Grasshopper+Parametric"
+      imageAlt="Grasshopper Diseño Paramétrico"
+    >
+      <div slot="content">
+        <Heading as="h2" variant="section" class="mb-6"> Grasshopper </Heading>
+        <Text variant="lead" color="muted" class="mb-6">
+          Grasshopper, integrado con Rhinoceros, es una herramienta de diseño
+          paramétrico visual que permite explorar formas y geometrías complejas
+          mediante la definición de relaciones y algoritmos.
+        </Text>
+        <Text variant="body" color="muted" class="mb-8">
+          Es ideal para la automatización de procesos de diseño y la creación de
+          variaciones infinitas, permitiendo optimización y exploración de
+          alternativas de diseño de manera eficiente.
+        </Text>
+        <ButtonGroup alignment="start">
+          <Button
+            href="/soluciones-de-software-cad-cam/grasshopper"
+            variant="primary"
+          >
+            Conoce Grasshopper
+          </Button>
+          <Button href="/cursos-de-capacitacion" variant="outline">
+            Ver Cursos
+          </Button>
+        </ButtonGroup>
+      </div>
+    </TwoColumn>
+  </Section>
+
+  <!-- Section Separator -->
+  <SectionSeparator
+    backgroundImage="https://placehold.co/1920x600?text=CNC+Manufacturing"
+    height="md"
+    overlay="dark"
+    overlayOpacity="40"
+    position="center"
+    withContent={true}
+  >
+    <Heading as="h2" variant="section" color="white" class="mb-4">
+      Del Diseño a la Fabricación
+    </Heading>
+    <Text variant="lead" color="white" class="max-w-2xl mx-auto">
+      Herramientas integradas para llevar sus modelos 3D directamente a la
+      producción
+    </Text>
+  </SectionSeparator>
+
+  <!-- RhinoCAM Section -->
+  <Section background="white">
+    <TwoColumn
+      imagePosition="right"
+      imageSrc="https://placehold.co/600x400?text=RhinoCAM+CNC"
+      imageAlt="RhinoCAM Software CAM"
+    >
+      <div slot="content">
+        <Heading as="h2" variant="section" class="mb-6"> RhinoCAM </Heading>
+        <Text variant="lead" color="muted" class="mb-6">
+          RhinoCAM es la solución CAM integrada en Rhinoceros para la
+          preparación y generación de trayectorias de herramientas para
+          maquinado CNC.
+        </Text>
+        <Text variant="body" color="muted" class="mb-8">
+          Permite transformar diseños 3D en piezas físicas con precisión,
+          soportando fresado, torneado y más. Integración perfecta con
+          Rhinoceros para un flujo de trabajo sin interrupciones.
+        </Text>
+        <ButtonGroup alignment="start">
+          <Button
+            href="/soluciones-de-software-cad-cam/rhinocam"
+            variant="primary"
+          >
+            Más sobre RhinoCAM
+          </Button>
+          <Button href="/servicios-de-fabricacion-digital" variant="outline">
+            Servicios CNC
+          </Button>
+        </ButtonGroup>
+      </div>
+    </TwoColumn>
+  </Section>
+
+  <!-- Mesh2Surface Section -->
+  <Section background="gray">
+    <TwoColumn
+      imagePosition="left"
+      imageSrc="https://placehold.co/600x400?text=Mesh2Surface+Reverse"
+      imageAlt="Mesh2Surface Ingeniería Inversa"
+    >
+      <div slot="content">
+        <Heading as="h2" variant="section" class="mb-6"> Mesh2Surface </Heading>
+        <Text variant="lead" color="muted" class="mb-6">
+          Mesh2Surface es una herramienta esencial para la ingeniería inversa,
+          que permite transformar datos de escaneo 3D (nubes de puntos o mallas)
+          en modelos de superficie CAD precisos y editables.
+        </Text>
+        <Text variant="body" color="muted" class="mb-8">
+          Trabajando directamente dentro de Rhinoceros, facilita la
+          reconstrucción de geometrías complejas a partir de datos escaneados,
+          ideal para restauración, análisis y rediseño de piezas existentes.
+        </Text>
+        <ButtonGroup alignment="start">
+          <Button
+            href="/soluciones-de-software-cad-cam/mesh2surface"
+            variant="primary"
+          >
+            Explora Mesh2Surface
+          </Button>
+          <Button href="/servicios-de-fabricacion-digital" variant="outline">
+            Servicios de Escaneo
+          </Button>
+        </ButtonGroup>
+      </div>
+    </TwoColumn>
+  </Section>
+
+  <!-- Industries Section -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <Heading as="h2" variant="section" class="mb-4">
+        Industrias que Atendemos
+      </Heading>
+      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
+        Nuestro software es utilizado por profesionales en diversas industrias
+      </Text>
+    </div>
+
+    <IconGrid columns="3">
+      <IconItem
+        title="Arquitectura"
+        description="Diseño paramétrico y modelado de formas complejas"
+        iconColor="blue"
+        iconPath="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      />
+
+      <IconItem
+        title="Diseño Industrial"
+        description="Desarrollo de productos y prototipos"
+        iconColor="green"
+        iconPath="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      />
+
+      <IconItem
+        title="Manufactura"
+        description="Maquinado CNC y fabricación digital"
+        iconColor="purple"
+        iconPath="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+      />
+
+      <IconItem
+        title="Joyería"
+        description="Diseño de precisión y fabricación de joyas"
+        iconColor="yellow"
+        iconPath="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+      />
+
+      <IconItem
+        title="Automotriz"
+        description="Diseño de componentes y carrocerías"
+        iconColor="red"
+        iconPath="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+      />
+
+      <IconItem
+        title="Medicina"
+        description="Dispositivos médicos y prótesis"
+        iconColor="indigo"
+        iconPath="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </IconGrid>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section background="blue">
+    <div class="text-center">
+      <Heading as="h2" variant="section" color="white" class="mb-4">
+        ¿Listo para Potenciar su Flujo de Trabajo?
+      </Heading>
+      <Text
+        variant="lead"
+        color="white"
+        class="mb-8 max-w-2xl mx-auto text-blue-100"
+      >
+        Descubra cómo nuestras soluciones de software CAD/CAM pueden transformar
+        sus procesos de diseño y fabricación.
+      </Text>
+      <ButtonGroup alignment="center">
+        <Button href="/contacto" variant="white" size="lg">
+          Solicitar Consulta
+        </Button>
+        <Button
+          href="/cursos-de-capacitacion"
+          variant="white-outline"
+          size="lg"
+        >
+          Ver Cursos Disponibles
+        </Button>
+      </ButtonGroup>
+    </div>
+  </Section>
+</Layout>
