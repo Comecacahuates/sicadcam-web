@@ -1,0 +1,44 @@
+---
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  iconColor: 'blue' | 'green' | 'purple' | 'yellow' | 'red' | 'indigo';
+  iconPath: string;
+}
+
+const { title, description, iconColor, iconPath } = Astro.props;
+
+const colorClasses = {
+  blue: 'bg-blue-100 text-blue-600',
+  green: 'bg-green-100 text-green-600',
+  purple: 'bg-purple-100 text-purple-600',
+  yellow: 'bg-yellow-100 text-yellow-600',
+  red: 'bg-red-100 text-red-600',
+  indigo: 'bg-indigo-100 text-indigo-600',
+};
+---
+
+<div class="text-center">
+  <div
+    class={`w-16 h-16 ${colorClasses[iconColor]} rounded-full flex items-center justify-center mx-auto mb-4`}
+  >
+    <svg
+      class="w-8 h-8"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d={iconPath}
+      ></path>
+    </svg>
+  </div>
+  <Heading as="h3" variant="card" class="mb-2">{title}</Heading>
+  <Text variant="body" color="muted">{description}</Text>
+</div>
