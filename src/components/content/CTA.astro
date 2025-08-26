@@ -1,9 +1,8 @@
 ---
-import Section from '../layout/Section.astro';
-import Heading from '../ui/Heading.astro';
-import Text from '../ui/Text.astro';
-import Button from '../ui/Button.astro';
-import ButtonGroup from '../ui/ButtonGroup.astro';
+import Section from "../layout/Section.astro";
+import SectionHeader from "./SectionHeader.astro";
+import Button from "../ui/Button.astro";
+import ButtonGroup from "../ui/ButtonGroup.astro";
 
 export interface Props {
   title: string;
@@ -16,51 +15,53 @@ export interface Props {
     text: string;
     href: string;
   };
-  background?: 'blue' | 'dark' | 'gray' | 'white';
-  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  background?: "blue" | "dark" | "gray" | "white";
+  padding?: "sm" | "md" | "lg" | "xl";
+  titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
   class?: string;
 }
 
-const { 
+const {
   title,
   description,
   primaryButton,
   secondaryButton,
-  background = 'blue',
-  padding = 'lg',
-  class: className = ''
+  background = "blue",
+  padding = "lg",
+  titleLevel = "h2",
+  titleVariant = "section",
+  maxWidth = "2xl",
+  class: className = "",
 } = Astro.props;
 
 // Define color schemes for different backgrounds
 const colorSchemes = {
   blue: {
-    titleColor: 'white',
-    textColor: 'white',
-    textClass: 'text-blue-100',
-    primaryVariant: 'white',
-    secondaryVariant: 'white-outline'
+    titleColor: "white",
+    descriptionColor: "white",
+    primaryVariant: "white",
+    secondaryVariant: "white-outline",
   },
   dark: {
-    titleColor: 'white',
-    textColor: 'white', 
-    textClass: 'text-slate-300',
-    primaryVariant: 'primary',
-    secondaryVariant: 'white-outline'
+    titleColor: "white",
+    descriptionColor: "white",
+    primaryVariant: "primary",
+    secondaryVariant: "white-outline",
   },
   gray: {
-    titleColor: 'default',
-    textColor: 'muted',
-    textClass: 'text-gray-600',
-    primaryVariant: 'primary',
-    secondaryVariant: 'outline'
+    titleColor: "default",
+    descriptionColor: "muted",
+    primaryVariant: "primary",
+    secondaryVariant: "outline",
   },
   white: {
-    titleColor: 'default',
-    textColor: 'muted',
-    textClass: 'text-gray-600',
-    primaryVariant: 'primary',
-    secondaryVariant: 'outline'
-  }
+    titleColor: "default",
+    descriptionColor: "muted",
+    primaryVariant: "primary",
+    secondaryVariant: "outline",
+  },
 };
 
 const scheme = colorSchemes[background];
@@ -68,29 +69,36 @@ const scheme = colorSchemes[background];
 
 <Section background={background} padding={padding} class={className}>
   <div class="text-center">
-    <Heading as="h2" variant="section" color={scheme.titleColor} class="mb-4">
-      {title}
-    </Heading>
-    <Text
-      variant="lead"
-      color={scheme.textColor}
-      class={`mb-8 max-w-2xl mx-auto ${scheme.textClass}`}
-    >
-      {description}
-    </Text>
+    <SectionHeader
+      title={title}
+      description={description}
+      titleLevel={titleLevel}
+      titleVariant={titleVariant}
+      titleColor={scheme.titleColor}
+      descriptionColor={scheme.descriptionColor}
+      maxWidth={maxWidth}
+      spacing="md"
+    />
+    
     <ButtonGroup alignment="center">
-      <Button href={primaryButton.href} variant={scheme.primaryVariant} size="lg">
+      <Button
+        href={primaryButton.href}
+        variant={scheme.primaryVariant}
+        size="lg"
+      >
         {primaryButton.text}
       </Button>
-      {secondaryButton && (
-        <Button
-          href={secondaryButton.href}
-          variant={scheme.secondaryVariant}
-          size="lg"
-        >
-          {secondaryButton.text}
-        </Button>
-      )}
+      {
+        secondaryButton && (
+          <Button
+            href={secondaryButton.href}
+            variant={scheme.secondaryVariant}
+            size="lg"
+          >
+            {secondaryButton.text}
+          </Button>
+        )
+      }
     </ButtonGroup>
   </div>
 </Section>

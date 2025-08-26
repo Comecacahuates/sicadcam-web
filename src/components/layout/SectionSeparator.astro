@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro';
+import SectionHeader from '../content/SectionHeader.astro';
 
 interface Props {
   backgroundImage?: string;
@@ -10,6 +11,12 @@ interface Props {
   attachment?: 'scroll' | 'fixed';
   withContent?: boolean;
   containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  // New props for SectionHeader integration
+  title?: string;
+  description?: string;
+  titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
   class?: string;
 }
 
@@ -22,6 +29,11 @@ const {
   attachment = 'scroll',
   withContent = false,
   containerSize = 'lg',
+  title,
+  description,
+  titleLevel = 'h2',
+  titleVariant = 'section',
+  maxWidth = '2xl',
   class: className = ''
 } = Astro.props;
 
@@ -74,7 +86,20 @@ const backgroundStyle = backgroundImage
   {withContent && (
     <div class="relative z-10 h-full flex items-center justify-center text-white">
       <Container size={containerSize} padding="none" class="text-center">
-        <slot />
+        {title ? (
+          <SectionHeader
+            title={title}
+            description={description}
+            titleLevel={titleLevel}
+            titleVariant={titleVariant}
+            titleColor="white"
+            descriptionColor="white"
+            maxWidth={maxWidth}
+            spacing="sm"
+          />
+        ) : (
+          <slot />
+        )}
       </Container>
     </div>
   )}

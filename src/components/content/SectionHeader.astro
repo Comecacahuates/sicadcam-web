@@ -15,7 +15,7 @@ export interface Props {
   class?: string;
 }
 
-const { 
+const {
   title,
   description,
   spacing = 'lg',
@@ -29,10 +29,10 @@ const {
 } = Astro.props;
 
 const spacingClasses = {
-  sm: 'mb-8',
-  md: 'mb-12',
-  lg: 'mb-16',
-  xl: 'mb-20'
+  sm: 'my-8',
+  md: 'my-12',
+  lg: 'my-16',
+  xl: 'my-20'
 };
 
 const alignmentClasses = {
@@ -58,18 +58,18 @@ const containerClass = alignment === 'center' ? 'mx-auto' : '';
 ---
 
 <div class={`${alignmentClasses[alignment]} ${spacingClasses[spacing]} ${className}`}>
-  <Heading 
-    as={titleLevel} 
-    variant={titleVariant} 
+  <Heading
+    as={titleLevel}
+    variant={titleVariant}
     color={titleColor}
     class="mb-4"
   >
     {title}
   </Heading>
-  
+
   {description && (
-    <Text 
-      variant="lead" 
+    <Text
+      variant="lead"
       color={descriptionColor}
       class={`${maxWidthClasses[maxWidth]} ${containerClass}`}
     >
