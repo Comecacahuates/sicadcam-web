@@ -1,10 +1,9 @@
 ---
-import Container from '../layout/Container.astro';
-import Breadcrumbs from '../ui/Breadcrumbs.astro';
-import Button from '../ui/Button.astro';
-import ButtonGroup from '../ui/ButtonGroup.astro';
-import Text from '../ui/Text.astro';
-import Heading from '../ui/Heading.astro';
+import Container from "../layout/Container.astro";
+import Breadcrumbs from "../ui/Breadcrumbs.astro";
+import Text from "../ui/Text.astro";
+import Heading from "../ui/Heading.astro";
+import CtaButtons from "../ui/CtaButtons.astro";
 
 interface Props {
   title: string;
@@ -19,87 +18,92 @@ interface Props {
     text: string;
     href: string;
   };
-  background?: 'white' | 'gray' | 'gradient' | 'blue' | 'green';
+  background?: "white" | "gray" | "gradient" | "blue" | "green";
   compact?: boolean;
   class?: string;
 }
 
-const { 
+const {
   title,
   subtitle,
   description,
   breadcrumbs,
   primaryCta,
   secondaryCta,
-  background = 'white',
+  background = "white",
   compact = false,
-  class: className = ''
+  class: className = "",
 } = Astro.props;
 
 const backgroundClasses = {
-  white: 'bg-white border-b border-slate-200',
-  gray: 'bg-slate-100 border-b border-slate-300',
-  gradient: 'bg-gradient-to-br from-blue-50 to-slate-100 border-b border-slate-300',
-  blue: 'bg-blue-600 text-white border-b border-blue-700',
-  green: 'bg-green-600 text-white border-b border-green-700'
+  white: "bg-white border-b border-slate-200",
+  gray: "bg-slate-100 border-b border-slate-300",
+  gradient:
+    "bg-gradient-to-br from-blue-50 to-slate-100 border-b border-slate-300",
+  blue: "bg-blue-600 text-white border-b border-blue-700",
+  green: "bg-green-600 text-white border-b border-green-700",
 };
 
-const paddingClass = compact ? 'lg' : 'xl';
+const paddingClass = compact ? "lg" : "xl";
+const isDarkBackground = background === "blue" || background === "green";
 ---
 
 <section class={`${backgroundClasses[background]} ${className}`}>
   <Container size="lg" padding={paddingClass}>
     <div class="max-w-4xl">
       <!-- Breadcrumbs -->
-      {breadcrumbs && (
-        <Breadcrumbs 
-          items={breadcrumbs} 
-          theme={(background === 'blue' || background === 'green') ? 'dark' : 'light'} 
-        />
-      )}
+      {
+        breadcrumbs && (
+          <Breadcrumbs
+            items={breadcrumbs}
+            theme={isDarkBackground ? "dark" : "light"}
+          />
+        )
+      }
 
       <!-- Subtitle -->
-      {subtitle && (
-        <Text variant="body" color={(background === 'blue' || background === 'green') ? 'white' : 'blue'} class="font-medium mb-3">
-          {subtitle}
-        </Text>
-      )}
-      
+      {
+        subtitle && (
+          <Text
+            variant="body"
+            color={isDarkBackground ? "white" : "blue"}
+            class="font-medium mb-3"
+          >
+            {subtitle}
+          </Text>
+        )
+      }
+
       <!-- Title -->
-      <Heading as="h1" variant="hero" color={(background === 'blue' || background === 'green') ? 'white' : 'default'} class="mb-6">
+      <Heading
+        as="h1"
+        variant="hero"
+        color={isDarkBackground ? "white" : "default"}
+        class="mb-6"
+      >
         {title}
       </Heading>
-      
+
       <!-- Description -->
-      {description && (
-        <Text variant="lead" color={(background === 'blue' || background === 'green') ? 'white' : 'muted'} class={`max-w-3xl ${(background === 'blue' || background === 'green') ? 'text-blue-100' : ''} ${(primaryCta || secondaryCta) ? 'mb-8' : ''}`}>
-          {description}
-        </Text>
-      )}
-      
+      {
+        description && (
+          <Text
+            variant="lead"
+            color={isDarkBackground ? "white" : "muted"}
+            class={`max-w-3xl ${isDarkBackground ? "text-blue-100" : ""} ${primaryCta || secondaryCta ? "mb-8" : ""}`}
+          >
+            {description}
+          </Text>
+        )
+      }
+
       <!-- CTAs -->
-      {(primaryCta || secondaryCta) && (
-        <ButtonGroup alignment="start">
-          {primaryCta && (
-            <Button 
-              href={primaryCta.href} 
-              variant={(background === 'blue' || background === 'green') ? 'white' : 'primary'}
-              size="lg"
-            >
-              {primaryCta.text}
-            </Button>
-          )}
-          {secondaryCta && (
-            <Button 
-              href={secondaryCta.href} 
-              variant={(background === 'blue' || background === 'green') ? 'white-outline' : 'outline'}
-              size="lg"
-            >
-              {secondaryCta.text}
-            </Button>
-          )}
-        </ButtonGroup>
-      )}
+      <CtaButtons
+        primaryCta={primaryCta}
+        secondaryCta={secondaryCta}
+        alignment="start"
+        theme={isDarkBackground ? "dark" : "light"}
+      />
     </div>
   </Container>
 </section>

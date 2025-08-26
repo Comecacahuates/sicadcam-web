@@ -1,9 +1,8 @@
 ---
 import Container from "../layout/Container.astro";
-import Button from "../ui/Button.astro";
-import ButtonGroup from "../ui/ButtonGroup.astro";
 import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
+import CtaButtons from "../ui/CtaButtons.astro";
 
 export interface Props {
   title: string;
@@ -45,32 +44,23 @@ const backgroundClasses = {
 
       {
         description && (
-          <Text variant="lead" size="xl" color="white" class="text-blue-100 mb-8">
+          <Text
+            variant="lead"
+            size="xl"
+            color="white"
+            class="text-blue-100 mb-8"
+          >
             {description}
           </Text>
         )
       }
 
-      {
-        (primaryCta || secondaryCta) && (
-          <ButtonGroup alignment="center">
-            {primaryCta && (
-              <Button href={primaryCta.href} variant="white" size="lg">
-                {primaryCta.text}
-              </Button>
-            )}
-            {secondaryCta && (
-              <Button
-                href={secondaryCta.href}
-                variant="white-outline"
-                size="lg"
-              >
-                {secondaryCta.text}
-              </Button>
-            )}
-          </ButtonGroup>
-        )
-      }
+      <CtaButtons
+        primaryCta={primaryCta}
+        secondaryCta={secondaryCta}
+        alignment="center"
+        theme="dark"
+      />
     </div>
   </Container>
 </section>
