@@ -18,7 +18,7 @@ interface Props {
     text: string;
     href: string;
   };
-  background?: 'white' | 'gray' | 'gradient' | 'blue';
+  background?: 'white' | 'gray' | 'gradient' | 'blue' | 'green';
   compact?: boolean;
   class?: string;
 }
@@ -39,7 +39,8 @@ const backgroundClasses = {
   white: 'bg-white border-b border-slate-200',
   gray: 'bg-slate-100 border-b border-slate-300',
   gradient: 'bg-gradient-to-br from-blue-50 to-slate-100 border-b border-slate-300',
-  blue: 'bg-blue-600 text-white border-b border-blue-700'
+  blue: 'bg-blue-600 text-white border-b border-blue-700',
+  green: 'bg-green-600 text-white border-b border-green-700'
 };
 
 const paddingClass = compact ? 'lg' : 'xl';
@@ -51,20 +52,20 @@ const paddingClass = compact ? 'lg' : 'xl';
       <!-- Breadcrumbs -->
       {breadcrumbs && (
         <nav class="mb-6" aria-label="Breadcrumb">
-          <ol class={`flex items-center space-x-2 text-sm ${background === 'blue' ? 'text-blue-200' : 'text-slate-500'}`}>
+          <ol class={`flex items-center space-x-2 text-sm ${(background === 'blue' || background === 'green') ? 'text-blue-200' : 'text-slate-500'}`}>
             {breadcrumbs.map((crumb, index) => (
               <li class="flex items-center">
                 {index > 0 && (
-                  <svg class={`w-4 h-4 mx-2 ${background === 'blue' ? 'text-blue-300' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class={`w-4 h-4 mx-2 ${(background === 'blue' || background === 'green') ? 'text-blue-300' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
                 )}
                 {crumb.href ? (
-                  <a href={crumb.href} class={`transition-colors ${background === 'blue' ? 'hover:text-white' : 'hover:text-blue-600'}`}>
+                  <a href={crumb.href} class={`transition-colors ${(background === 'blue' || background === 'green') ? 'hover:text-white' : 'hover:text-blue-600'}`}>
                     {crumb.text}
                   </a>
                 ) : (
-                  <span class={`font-medium ${background === 'blue' ? 'text-white' : 'text-slate-700'}`}>{crumb.text}</span>
+                  <span class={`font-medium ${(background === 'blue' || background === 'green') ? 'text-white' : 'text-slate-700'}`}>{crumb.text}</span>
                 )}
               </li>
             ))}
@@ -74,19 +75,19 @@ const paddingClass = compact ? 'lg' : 'xl';
 
       <!-- Subtitle -->
       {subtitle && (
-        <Text variant="body" color={background === 'blue' ? 'white' : 'blue'} class="font-medium mb-3">
+        <Text variant="body" color={(background === 'blue' || background === 'green') ? 'white' : 'blue'} class="font-medium mb-3">
           {subtitle}
         </Text>
       )}
       
       <!-- Title -->
-      <Heading as="h1" variant="hero" color={background === 'blue' ? 'white' : 'default'} class="mb-6">
+      <Heading as="h1" variant="hero" color={(background === 'blue' || background === 'green') ? 'white' : 'default'} class="mb-6">
         {title}
       </Heading>
       
       <!-- Description -->
       {description && (
-        <Text variant="lead" color={background === 'blue' ? 'white' : 'muted'} class={`max-w-3xl ${background === 'blue' ? 'text-blue-100' : ''} ${(primaryCta || secondaryCta) ? 'mb-8' : ''}`}>
+        <Text variant="lead" color={(background === 'blue' || background === 'green') ? 'white' : 'muted'} class={`max-w-3xl ${(background === 'blue' || background === 'green') ? 'text-blue-100' : ''} ${(primaryCta || secondaryCta) ? 'mb-8' : ''}`}>
           {description}
         </Text>
       )}
@@ -97,7 +98,7 @@ const paddingClass = compact ? 'lg' : 'xl';
           {primaryCta && (
             <Button 
               href={primaryCta.href} 
-              variant={background === 'blue' ? 'white' : 'primary'}
+              variant={(background === 'blue' || background === 'green') ? 'white' : 'primary'}
               size="lg"
             >
               {primaryCta.text}
@@ -106,7 +107,7 @@ const paddingClass = compact ? 'lg' : 'xl';
           {secondaryCta && (
             <Button 
               href={secondaryCta.href} 
-              variant={background === 'blue' ? 'white-outline' : 'outline'}
+              variant={(background === 'blue' || background === 'green') ? 'white-outline' : 'outline'}
               size="lg"
             >
               {secondaryCta.text}

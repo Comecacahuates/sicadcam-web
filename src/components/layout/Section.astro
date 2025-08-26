@@ -2,7 +2,7 @@
 import Container from './Container.astro';
 
 export interface Props {
-  background?: 'white' | 'gray' | 'blue' | 'dark' | 'transparent';
+  background?: 'white' | 'gray' | 'blue' | 'green' | 'dark' | 'transparent';
   containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   class?: string;
@@ -19,6 +19,7 @@ const backgroundClasses = {
   white: 'bg-white',
   gray: 'bg-slate-100',
   blue: 'bg-blue-600 text-white',
+  green: 'bg-green-600 text-white',
   dark: 'bg-slate-900 text-white',
   transparent: ''
 };

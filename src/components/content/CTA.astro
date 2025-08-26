@@ -15,7 +15,7 @@ export interface Props {
     text: string;
     href: string;
   };
-  background?: "blue" | "dark" | "gray" | "white";
+  background?: "blue" | "dark" | "gray" | "white" | "green";
   padding?: "sm" | "md" | "lg" | "xl";
   titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
@@ -44,6 +44,12 @@ const colorSchemes = {
     primaryVariant: "white",
     secondaryVariant: "white-outline",
   },
+  green: {
+    titleColor: "white",
+    descriptionColor: "white",
+    primaryVariant: "white",
+    secondaryVariant: "white-outline",
+  },
   dark: {
     titleColor: "white",
     descriptionColor: "white",
@@ -64,7 +70,8 @@ const colorSchemes = {
   },
 };
 
-const scheme = colorSchemes[background];
+// Get the color scheme with fallback to blue if background is not found
+const scheme = colorSchemes[background] || colorSchemes.blue;
 ---
 
 <Section background={background} padding={padding} class={className}>

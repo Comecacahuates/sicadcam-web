@@ -1,0 +1,395 @@
+---
+import Layout from "../../components/layout/Layout.astro";
+import PageHeader from "../../components/content/PageHeader.astro";
+import TwoColumn from "../../components/content/TwoColumn.astro";
+import ContentSection from "../../components/content/ContentSection.astro";
+import SectionHeader from "../../components/content/SectionHeader.astro";
+import CTA from "../../components/content/CTA.astro";
+import Section from "../../components/layout/Section.astro";
+import SectionSeparator from "../../components/layout/SectionSeparator.astro";
+import CardGrid from "../../components/layout/CardGrid.astro";
+import ContentCard from "../../components/ui/ContentCard.astro";
+import IndustryGrid from "../../components/ui/IndustryGrid.astro";
+import Button from "../../components/ui/Button.astro";
+import ButtonGroup from "../../components/ui/ButtonGroup.astro";
+import Text from "../../components/ui/Text.astro";
+import Heading from "../../components/ui/Heading.astro";
+import HighlightBox from "../../components/ui/HighlightBox.astro";
+import "../../styles/global.css";
+
+// Key features data for Grasshopper
+const features = [
+  {
+    title: "Programación Visual",
+    description: "Cree algoritmos complejos sin escribir código mediante un intuitivo editor de nodos gráficos",
+    iconColor: "green" as const,
+    iconPath: "M13 10V3L4 14h7v7l9-11h-7z"
+  },
+  {
+    title: "Integración Nativa",
+    description: "Interacción en tiempo real con la geometría de Rhinoceros sin importar o exportar archivos",
+    iconColor: "blue" as const,
+    iconPath: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+  },
+  {
+    title: "Diseño Paramétrico",
+    description: "Explore cientos de variaciones de diseño modificando parámetros en tiempo real",
+    iconColor: "purple" as const,
+    iconPath: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+  },
+  {
+    title: "Fabricación Digital",
+    description: "Conexión directa con máquinas CNC, cortadoras láser e impresoras 3D",
+    iconColor: "orange" as const,
+    iconPath: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547A8.014 8.014 0 004 21h16a8.014 8.014 0 00-.244-5.572zM12 17a2 2 0 100-4 2 2 0 000 4z"
+  },
+  {
+    title: "Ecosistema de Plugins",
+    description: "Acceso a cientos de plugins especializados desde Food4Rhino para tareas específicas",
+    iconColor: "indigo" as const,
+    iconPath: "M19 11H5m14-7H5m14 14H5"
+  },
+  {
+    title: "API de Desarrollo",
+    description: "Cree herramientas personalizadas con C#, Python y VB.NET para necesidades específicas",
+    iconColor: "red" as const,
+    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+  }
+];
+
+// Industries/Applications data for Grasshopper
+const industries = [
+  {
+    title: "Arquitectura Paramétrica",
+    description: "Fachadas complejas, estructuras optimizadas y sistemas adaptativos generados algorítmicamente",
+    imageSrc: "https://placehold.co/600x400?text=Arquitectura+Paramétrica",
+    imageAlt: "Fachada paramétrica diseñada con Grasshopper"
+  },
+  {
+    title: "Diseño Industrial",
+    description: "Productos personalizables y optimización de formas mediante algoritmos generativos",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Industrial+Paramétrico",
+    imageAlt: "Producto industrial parametrizado con Grasshopper"
+  },
+  {
+    title: "Arte Generativo",
+    description: "Patrones complejos y formas orgánicas creadas mediante programación visual",
+    imageSrc: "https://placehold.co/600x400?text=Arte+Generativo",
+    imageAlt: "Arte generativo creado con Grasshopper"
+  },
+  {
+    title: "Joyería Paramétrica",
+    description: "Diseños de joyas complejas y personalizables con patrones algorítmicos únicos",
+    imageSrc: "https://placehold.co/600x400?text=Joyería+Paramétrica",
+    imageAlt: "Joyería paramétrica diseñada con Grasshopper"
+  },
+  {
+    title: "Estructuras Optimizadas",
+    description: "Análisis y optimización estructural mediante algoritmos de diseño generativo",
+    imageSrc: "https://placehold.co/600x400?text=Estructuras+Optimizadas",
+    imageAlt: "Estructura optimizada con Grasshopper"
+  },
+  {
+    title: "Fabricación Digital",
+    description: "Automatización de procesos de fabricación CNC, corte láser e impresión 3D",
+    imageSrc: "https://placehold.co/600x400?text=Fabricación+Digital",
+    imageAlt: "Fabricación digital automatizada con Grasshopper"
+  }
+];
+---
+
+<Layout
+  title="Grasshopper - Diseño Paramétrico y Automatización - SICADCAM"
+  description="Grasshopper: Herramienta de programación visual para Rhinoceros. Automatice tareas y explore diseños complejos sin escribir código."
+>
+  <!-- Page Header -->
+  <PageHeader
+    title="Grasshopper"
+    subtitle="Diseño Paramétrico y Automatización"
+    description="La herramienta de programación visual de Rhinoceros que permite automatizar tareas y explorar diseños complejos sin escribir una sola línea de código."
+    breadcrumbs={[
+      { text: "Inicio", href: "/" },
+      { text: "Software CAD/CAM", href: "/soluciones-de-software-cad-cam" },
+      { text: "Grasshopper" }
+    ]}
+    primaryCta={{
+      text: "Solicitar Demo",
+      href: "/contacto",
+    }}
+    secondaryCta={{
+      text: "Ver Cursos",
+      href: "/cursos-de-capacitacion",
+    }}
+    background="green"
+  />
+
+  <!-- What is Grasshopper Section -->
+  <Section background="white">
+    <div class="max-w-6xl mx-auto">
+      <TwoColumn
+        imageSrc="https://placehold.co/600x400?text=Grasshopper+Interface"
+        imageAlt="Interfaz de programación visual de Grasshopper"
+        imagePosition="right"
+        gap="xl"
+        alignItems="center"
+      >
+        <div slot="content">
+          <Heading as="h2" variant="section" class="mb-6 text-gray-900">
+            ¿Qué es Grasshopper?
+          </Heading>
+          <Text variant="lead" color="muted" class="mb-6">
+            Grasshopper es la herramienta de programación visual de Rhinoceros. Permite automatizar tareas y explorar diseños complejos sin escribir una sola línea de código, a través de un intuitivo editor de nodos gráficos.
+          </Text>
+          <ButtonGroup>
+            <Button href="/cursos-de-capacitacion" variant="primary">
+              Cursos de Grasshopper
+            </Button>
+            <Button href="/contacto" variant="outline">
+              Más Información
+            </Button>
+          </ButtonGroup>
+        </div>
+      </TwoColumn>
+    </div>
+  </Section>
+
+  <!-- Integration Section -->
+  <Section background="gray">
+    <div class="max-w-6xl mx-auto">
+      <TwoColumn
+        imageSrc="https://placehold.co/600x400?text=Rhinoceros+Grasshopper+Integration"
+        imageAlt="Integración total entre Rhinoceros y Grasshopper"
+        imagePosition="left"
+        gap="xl"
+        alignItems="center"
+      >
+        <div slot="content">
+          <Heading as="h2" variant="section" class="mb-6 text-gray-900">
+            Integración Total con Rhinoceros
+          </Heading>
+          <Text variant="lead" color="muted" class="mb-4">
+            Incluido de forma gratuita con Rhinoceros, Grasshopper interactúa en tiempo real con la geometría de Rhino.
+          </Text>
+          <Text variant="body" color="muted" class="mb-6">
+            Esta integración nativa crea un flujo de trabajo unificado y excepcionalmente potente, eliminando la necesidad de importar o exportar archivos.
+          </Text>
+          <HighlightBox
+            title="Incluido Gratis"
+            description="Grasshopper viene incluido sin costo adicional con cada licencia de Rhinoceros"
+            variant="success"
+          />
+        </div>
+      </TwoColumn>
+    </div>
+  </Section>
+
+  <!-- Applications Section -->
+  <Section background="white">
+    <div class="max-w-6xl mx-auto">
+      <TwoColumn
+        imageSrc="https://placehold.co/600x400?text=Grasshopper+Applications"
+        imageAlt="Aplicaciones versátiles de Grasshopper en diferentes industrias"
+        imagePosition="right"
+        gap="xl"
+        alignItems="center"
+      >
+        <div slot="content">
+          <Heading as="h2" variant="section" class="mb-6 text-gray-900">
+            Aplicaciones y Versatilidad
+          </Heading>
+          <Text variant="lead" color="muted" class="mb-4">
+            La versatilidad de Grasshopper lo hace ideal para el diseño algorítmico en campos como la arquitectura, la ingeniería y el diseño industrial.
+          </Text>
+          <Text variant="body" color="muted" class="mb-6">
+            Permite crear desde fachadas complejas y estructuras optimizadas hasta productos personalizables y arte generativo.
+          </Text>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <Text variant="body" color="default">Fachadas arquitectónicas complejas</Text>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <Text variant="body" color="default">Estructuras optimizadas</Text>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <Text variant="body" color="default">Productos personalizables</Text>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <Text variant="body" color="default">Arte generativo</Text>
+            </div>
+          </div>
+        </div>
+      </TwoColumn>
+    </div>
+  </Section>
+
+  <!-- Automation Section -->
+  <Section background="gray">
+    <div class="max-w-6xl mx-auto">
+      <TwoColumn
+        imageSrc="https://placehold.co/600x400?text=Grasshopper+Automation"
+        imageAlt="Automatización y optimización de flujos de trabajo con Grasshopper"
+        imagePosition="left"
+        gap="xl"
+        alignItems="center"
+      >
+        <div slot="content">
+          <Heading as="h2" variant="section" class="mb-6 text-gray-900">
+            Automatización y Optimización de Flujos de Trabajo
+          </Heading>
+          <Text variant="lead" color="muted" class="mb-4">
+            Optimiza tu flujo de trabajo automatizando tareas repetitivas.
+          </Text>
+          <Text variant="body" color="muted" class="mb-6">
+            Con Grasshopper, puedes explorar cientos de variaciones de diseño y conectar tu modelo directamente con la fabricación digital (CNC, corte láser, etc) de forma automática.
+          </Text>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <HighlightBox
+              title="Variaciones Infinitas"
+              description="Explore cientos de opciones de diseño modificando parámetros"
+              variant="info"
+            />
+            <HighlightBox
+              title="Fabricación Directa"
+              description="Conexión automática con máquinas de fabricación digital"
+              variant="warning"
+            />
+          </div>
+        </div>
+      </TwoColumn>
+    </div>
+  </Section>
+
+  <!-- Section Separator -->
+  <SectionSeparator
+    backgroundImage="https://placehold.co/1920x600?text=Grasshopper+Parametric+Design"
+    height="md"
+    overlay="dark"
+    overlayOpacity="50"
+    position="center"
+    withContent={true}
+    title="Diseño Paramétrico Avanzado"
+    description="Transforme ideas complejas en realidad mediante algoritmos visuales"
+  />
+
+  <!-- Ecosystem Section -->
+  <Section background="white">
+    <div class="max-w-6xl mx-auto">
+      <TwoColumn
+        imageSrc="https://placehold.co/600x400?text=Grasshopper+Plugins+Ecosystem"
+        imageAlt="Ecosistema de plugins y desarrollo de Grasshopper"
+        imagePosition="right"
+        gap="xl"
+        alignItems="center"
+      >
+        <div slot="content">
+          <Heading as="h2" variant="section" class="mb-6 text-gray-900">
+            Ecosistema de Plugins y Desarrollo
+          </Heading>
+          <Text variant="lead" color="muted" class="mb-4">
+            Expande el poder de Grasshopper con cientos de plugins desde Food4Rhino para tareas especializadas como análisis estructural o robótica.
+          </Text>
+          <Text variant="body" color="muted" class="mb-6">
+            Para una flexibilidad total, su API de desarrollo permite crear herramientas propias a medida.
+          </Text>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <Text variant="body" color="default" class="font-medium">Food4Rhino</Text>
+                <Text variant="small" color="muted">Cientos de plugins gratuitos y comerciales</Text>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <Text variant="body" color="default" class="font-medium">API de Desarrollo</Text>
+                <Text variant="small" color="muted">C#, Python y VB.NET para herramientas personalizadas</Text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </TwoColumn>
+    </div>
+  </Section>
+
+  <!-- Key Features -->
+  <Section background="gray">
+    <SectionHeader
+      title="Características Principales"
+      description="Todo lo que necesita para el diseño paramétrico y la automatización"
+    />
+
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {features.map((feature) => (
+          <div class="flex items-start space-x-4">
+            <div class={`w-8 h-8 text-${feature.iconColor}-600 flex-shrink-0 mt-1`}>
+              <svg
+                class="w-full h-full"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d={feature.iconPath}
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <Heading as="h3" variant="card" class="mb-2 text-gray-900">
+                {feature.title}
+              </Heading>
+              <Text variant="body" color="muted">
+                {feature.description}
+              </Text>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Applications in Industry Section -->
+  <Section background="white">
+    <SectionHeader
+      title="Aplicaciones en la Industria"
+      description="Descubra cómo Grasshopper transforma diferentes sectores mediante el diseño paramétrico y la automatización"
+    />
+
+    <IndustryGrid 
+      industries={industries} 
+      columns="3" 
+      imageAspect="video"
+    />
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="¿Listo para Automatizar su Flujo de Diseño?"
+    description="Descubra el poder del diseño paramétrico con Grasshopper y transforme la manera en que crea y desarrolla sus proyectos."
+    primaryButton={{
+      text: "Solicitar Demo Gratuita",
+      href: "/contacto"
+    }}
+    secondaryButton={{
+      text: "Ver Cursos de Grasshopper",
+      href: "/cursos-de-capacitacion"
+    }}
+    background="green"
+  />
+</Layout>
