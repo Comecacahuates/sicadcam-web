@@ -1,0 +1,52 @@
+---
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+export interface Props {
+  industries: Array<{
+    title: string;
+    description: string;
+    imageSrc: string;
+    imageAlt: string;
+    size?: 'small' | 'medium' | 'large';
+  }>;
+  columns?: '2' | '3' | '4';
+  class?: string;
+}
+
+const { industries, columns = '3', class: className = '' } = Astro.props;
+
+const gridClasses = {
+  '2': 'columns-1 md:columns-2',
+  '3': 'columns-1 md:columns-2 lg:columns-3',
+  '4': 'columns-1 md:columns-2 lg:columns-3 xl:columns-4'
+};
+
+const sizeClasses = {
+  small: 'h-48',
+  medium: 'h-64',
+  large: 'h-80'
+};
+---
+
+<div class={`${gridClasses[columns]} gap-6 space-y-6 ${className}`}>
+  {industries.map((industry) => (
+    <div class="break-inside-avoid bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden">
+      <div class={`${sizeClasses[industry.size || 'medium']} relative`}>
+        <img 
+          src={industry.imageSrc}
+          alt={industry.imageAlt}
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="p-6">
+        <Heading as="h3" variant="card" class="mb-3 text-gray-900">
+          {industry.title}
+        </Heading>
+        <Text variant="body" color="muted" class="leading-relaxed">
+          {industry.description}
+        </Text>
+      </div>
+    </div>
+  ))}
+</div>

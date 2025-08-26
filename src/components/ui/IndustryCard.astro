@@ -1,0 +1,77 @@
+---
+import ImageCard from "./ImageCard.astro";
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import Button from "./Button.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  variant?: "default" | "overlay" | "side";
+  buttonText?: string;
+  buttonHref?: string;
+  buttonVariant?: "primary" | "secondary" | "outline" | "ghost";
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  variant = "default",
+  buttonText,
+  buttonHref,
+  buttonVariant = "outline",
+  class: className = "",
+} = Astro.props;
+
+// Map variants to ImageCard layouts
+const layoutMap = {
+  default: "stacked",
+  overlay: "overlay",
+  side: "side",
+} as const;
+---
+
+<ImageCard
+  imageSrc={imageSrc}
+  imageAlt={imageAlt}
+  layout={layoutMap[variant]}
+  imageAspect="video"
+  contentPadding="md"
+  hover={true}
+  class={className}
+>
+  <Heading
+    as="h3"
+    variant="card"
+    class={`mb-3 ${variant === "overlay" ? "text-white mb-2" : "text-gray-900"}`}
+  >
+    {title}
+  </Heading>
+
+  <Text
+    variant="body"
+    class={`leading-relaxed mb-6 ${
+      variant === "overlay" ? "text-gray-200 mb-4" : "text-gray-600"
+    }`}
+  >
+    {description}
+  </Text>
+
+  {
+    buttonText && buttonHref && (
+      <Button
+        href={buttonHref}
+        variant={variant === "overlay" ? "white-outline" : buttonVariant}
+        size={variant === "overlay" ? "sm" : undefined}
+        class={variant === "default" ? "w-full" : undefined}
+      >
+        {buttonText}
+      </Button>
+    )
+  }
+</ImageCard>
