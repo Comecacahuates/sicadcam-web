@@ -2,6 +2,7 @@
 import Layout from "../components/layout/Layout.astro";
 import Hero from "../components/content/Hero.astro";
 import TwoColumn from "../components/content/TwoColumn.astro";
+import SectionHeader from "../components/content/SectionHeader.astro";
 import CTA from "../components/content/CTA.astro";
 import Section from "../components/layout/Section.astro";
 import SectionSeparator from "../components/layout/SectionSeparator.astro";
@@ -59,15 +60,11 @@ import "../styles/global.css";
 
   <!-- Experience Section -->
   <Section background="gray" padding="lg">
-    <div class="text-center mb-12">
-      <Heading as="h2" variant="section" class="mb-4">
-        Nuestra Trayectoria y Experiencia
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Con más de tres décadas de experiencia en ingeniería y manufactura, nos
-        hemos establecido como líderes en la industria CAD-CAM.
-      </Text>
-    </div>
+    <SectionHeader
+      title="Nuestra Trayectoria y Experiencia"
+      description="Con más de tres décadas de experiencia en ingeniería y manufactura, nos hemos establecido como líderes en la industria CAD-CAM."
+      spacing="md"
+    />
 
     <CardGrid columns="3">
       <StatCard
@@ -110,13 +107,11 @@ import "../styles/global.css";
 
   <!-- Services Section -->
   <Section background="white" padding="lg" id="servicios">
-    <div class="text-center mb-12">
-      <Heading as="h2" variant="section" class="mb-4"> Nuestra Oferta </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la
-        producción y la capacitación.
-      </Text>
-    </div>
+    <SectionHeader
+      title="Nuestra Oferta"
+      description="Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la producción y la capacitación."
+      spacing="md"
+    />
 
     <CardGrid columns="3">
       <ContentCard

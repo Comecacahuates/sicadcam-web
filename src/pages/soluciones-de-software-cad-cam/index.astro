@@ -2,6 +2,7 @@
 import Layout from "../../components/layout/Layout.astro";
 import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
+import SectionHeader from "../../components/content/SectionHeader.astro";
 import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
 import CardGrid from "../../components/layout/CardGrid.astro";
@@ -38,15 +39,10 @@ import "../../styles/global.css";
 
   <!-- Software Overview Stats -->
   <Section background="white">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        Software Líder en la Industria
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Más de dos décadas distribuyendo y capacitando en las mejores
-        herramientas CAD/CAM del mercado
-      </Text>
-    </div>
+    <SectionHeader
+      title="Software Líder en la Industria"
+      description="Más de dos décadas distribuyendo y capacitando en las mejores herramientas CAD/CAM del mercado"
+    />
 
     <CardGrid columns="4" breakpoints={{ md: "2", lg: "4" }}>
       <StatCard
@@ -233,14 +229,10 @@ import "../../styles/global.css";
 
   <!-- Industries Section -->
   <Section background="white">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        Industrias que Atendemos
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Nuestro software es utilizado por profesionales en diversas industrias
-      </Text>
-    </div>
+    <SectionHeader
+      title="Industrias que Atendemos"
+      description="Nuestro software es utilizado por profesionales en diversas industrias"
+    />
 
     <IconGrid columns="3">
       <IconItem

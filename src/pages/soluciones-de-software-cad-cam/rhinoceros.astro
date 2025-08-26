@@ -2,6 +2,7 @@
 import Layout from "../../components/layout/Layout.astro";
 import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
+import SectionHeader from "../../components/content/SectionHeader.astro";
 import CTA from "../../components/content/CTA.astro";
 import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
@@ -122,14 +123,11 @@ const industries = [
 
   <!-- What is Rhinoceros Section -->
   <Section background="white">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        ¿Qué es Rhinoceros?
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-4xl mx-auto">
-        El software de modelado 3D de formas libres que se ha consolidado como una herramienta indispensable en una amplia gama de industrias. Conocido por su impresionante versatilidad, precisión y facilidad de uso, Rhino permite a diseñadores, arquitectos e ingenieros transformar cualquier concepto en un modelo digital detallado y listo para la fabricación.
-      </Text>
-    </div>
+    <SectionHeader
+      title="¿Qué es Rhinoceros?"
+      description="El software de modelado 3D de formas libres que se ha consolidado como una herramienta indispensable en una amplia gama de industrias. Conocido por su impresionante versatilidad, precisión y facilidad de uso, Rhino permite a diseñadores, arquitectos e ingenieros transformar cualquier concepto en un modelo digital detallado y listo para la fabricación."
+      maxWidth="4xl"
+    />
   </Section>
 
   <!-- Ease of Use Section -->
@@ -296,14 +294,10 @@ const industries = [
 
   <!-- Key Features -->
   <Section background="white">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        Características Principales
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Todo lo que necesita para el modelado 3D profesional
-      </Text>
-    </div>
+    <SectionHeader
+      title="Características Principales"
+      description="Todo lo que necesita para el modelado 3D profesional"
+    />
 
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -340,14 +334,10 @@ const industries = [
 
   <!-- Industries Section - Option 2: Industry Cards (Default) -->
   <Section background="gray">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        Industrias - Opción 2: Industry Cards (Recomendado)
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Tarjetas con imágenes - diseño clásico y profesional
-      </Text>
-    </div>
+    <SectionHeader
+      title="Industrias - Opción 2: Industry Cards (Recomendado)"
+      description="Tarjetas con imágenes - diseño clásico y profesional"
+    />
 
     <CardGrid columns="3" breakpoints={{ md: "2", lg: "3" }}>
       {industries.map((industry) => (
@@ -364,14 +354,10 @@ const industries = [
 
   <!-- Industries Section - Option 4: Industry Grid (Clean) -->
   <Section background="white">
-    <div class="text-center mb-16">
-      <Heading as="h2" variant="section" class="mb-4">
-        Industrias - Opción 4: Industry Grid (Limpio)
-      </Heading>
-      <Text variant="lead" color="muted" class="max-w-3xl mx-auto">
-        Grid limpio con efectos hover - minimalista y elegante
-      </Text>
-    </div>
+    <SectionHeader
+      title="Industrias - Opción 4: Industry Grid (Limpio)"
+      description="Grid limpio con efectos hover - minimalista y elegante"
+    />
 
     <IndustryGrid 
       industries={industries} 
