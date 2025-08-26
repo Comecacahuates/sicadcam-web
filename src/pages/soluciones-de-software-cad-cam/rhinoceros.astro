@@ -4,7 +4,7 @@ import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
 import ContentSection from "../../components/content/ContentSection.astro";
 import SectionHeader from "../../components/content/SectionHeader.astro";
-import CTA from "../../components/content/CTA.astro";
+import CtaSection from "../../components/content/CtaSection.astro";
 import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
 import CardGrid from "../../components/layout/CardGrid.astro";
@@ -19,40 +19,47 @@ import "../../styles/global.css";
 const features = [
   {
     title: "Modelado de Formas Libres",
-    description: "Cree geometrías complejas y orgánicas con precisión matemática",
+    description:
+      "Cree geometrías complejas y orgánicas con precisión matemática",
     iconColor: "blue" as const,
-    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    iconPath:
+      "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
   },
   {
     title: "Compatibilidad Universal",
     description: "Importa y exporta más de 30 formatos de archivo diferentes",
     iconColor: "green" as const,
-    iconPath: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+    iconPath:
+      "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z",
   },
   {
     title: "Análisis y Validación",
-    description: "Herramientas integradas para análisis de geometría y validación",
+    description:
+      "Herramientas integradas para análisis de geometría y validación",
     iconColor: "purple" as const,
-    iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+    iconPath:
+      "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
   },
   {
     title: "Renderizado Integrado",
     description: "Visualización fotorrealista con materiales y luces avanzadas",
     iconColor: "yellow" as const,
-    iconPath: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+    iconPath:
+      "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
   },
   {
     title: "Scripting y Automatización",
     description: "Python, C# y VB.NET para automatizar tareas repetitivas",
     iconColor: "red" as const,
-    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
   },
   {
     title: "Multiplataforma",
     description: "Disponible para Windows y Mac con la misma funcionalidad",
     iconColor: "indigo" as const,
-    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-  }
+    iconPath:
+      "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  },
 ];
 ---
 
@@ -68,7 +75,7 @@ const features = [
     breadcrumbs={[
       { text: "Inicio", href: "/" },
       { text: "Software CAD/CAM", href: "/soluciones-de-software-cad-cam" },
-      { text: "Rhinoceros" }
+      { text: "Rhinoceros" },
     ]}
     primaryCta={{
       text: "Solicitar Demo",
@@ -100,17 +107,19 @@ const features = [
     primaryButton={{
       text: "Cursos de Rhinoceros",
       href: "/cursos-de-capacitacion",
-      variant: "primary"
+      variant: "primary",
     }}
     secondaryButton={{
       text: "Solicitar Información",
       href: "/contacto",
-      variant: "outline"
+      variant: "outline",
     }}
     background="gray"
   >
     <Text variant="body" color="muted">
-      Diseñado para ser dominado rápidamente por usuarios de todos los niveles, no requiere experiencia previa en modelado 3D, invitando a una exploración y creación gratificante desde el primer momento.
+      Diseñado para ser dominado rápidamente por usuarios de todos los niveles,
+      no requiere experiencia previa en modelado 3D, invitando a una exploración
+      y creación gratificante desde el primer momento.
     </Text>
   </ContentSection>
 
@@ -124,17 +133,20 @@ const features = [
     primaryButton={{
       text: "Consultar Compatibilidad",
       href: "/contacto",
-      variant: "primary"
+      variant: "primary",
     }}
     secondaryButton={{
       text: "Servicios CAD/CAM",
       href: "/servicios-de-fabricacion-digital",
-      variant: "outline"
+      variant: "outline",
     }}
     background="white"
   >
     <Text variant="body" color="muted">
-      La versatilidad de Rhinoceros lo convierte en la herramienta ideal para profesionales de arquitectura, diseño industrial, joyería, calzado y diseño de moldes, permitiendo un flujo de trabajo colaborativo y un modelado 3D preciso y libre.
+      La versatilidad de Rhinoceros lo convierte en la herramienta ideal para
+      profesionales de arquitectura, diseño industrial, joyería, calzado y
+      diseño de moldes, permitiendo un flujo de trabajo colaborativo y un
+      modelado 3D preciso y libre.
     </Text>
   </ContentSection>
 
@@ -148,18 +160,21 @@ const features = [
     primaryButton={{
       text: "Conoce Grasshopper",
       href: "/soluciones-de-software-cad-cam/grasshopper",
-      variant: "primary"
+      variant: "primary",
     }}
     secondaryButton={{
       text: "Plugins Personalizados",
       href: "/contacto",
-      variant: "outline"
+      variant: "outline",
     }}
     background="gray"
     titleLevel="h3"
   >
     <Text variant="body" color="muted">
-      La plataforma Food4Rhino ofrece cientos de opciones gratuitas y de pago para aplicaciones especializadas, mientras que su API de desarrollo y completa documentación permiten crear plugins a medida para cualquier necesidad.
+      La plataforma Food4Rhino ofrece cientos de opciones gratuitas y de pago
+      para aplicaciones especializadas, mientras que su API de desarrollo y
+      completa documentación permiten crear plugins a medida para cualquier
+      necesidad.
     </Text>
   </ContentSection>
 
@@ -185,17 +200,18 @@ const features = [
     primaryButton={{
       text: "Consultar Precios",
       href: "/contacto",
-      variant: "primary"
+      variant: "primary",
     }}
     secondaryButton={{
       text: "Descuentos Educativos",
       href: "/contacto",
-      variant: "outline"
+      variant: "outline",
     }}
     background="white"
   >
     <Text variant="body" color="muted">
-      Su accesibilidad se refuerza con precios especiales para estudiantes, profesores y universidades.
+      Su accesibilidad se refuerza con precios especiales para estudiantes,
+      profesores y universidades.
     </Text>
   </ContentSection>
 
@@ -209,17 +225,20 @@ const features = [
     primaryButton={{
       text: "Soporte Técnico",
       href: "/contacto",
-      variant: "primary"
+      variant: "primary",
     }}
     secondaryButton={{
       text: "Capacitación Oficial",
       href: "/cursos-de-capacitacion",
-      variant: "outline"
+      variant: "outline",
     }}
     background="gray"
   >
     <Text variant="body" color="muted">
-      Además de la extensa documentación oficial, existe una comunidad global y activa de usuarios y desarrolladores siempre dispuesta a compartir conocimientos y resolver dudas a través del foro de McNeel, asegurando que siempre encuentres la ayuda que necesitas.
+      Además de la extensa documentación oficial, existe una comunidad global y
+      activa de usuarios y desarrolladores siempre dispuesta a compartir
+      conocimientos y resolver dudas a través del foro de McNeel, asegurando que
+      siempre encuentres la ayuda que necesitas.
     </Text>
   </ContentSection>
 
@@ -232,48 +251,52 @@ const features = [
 
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {features.map((feature) => (
-          <div class="flex items-start space-x-4">
-            <div class={`w-8 h-8 text-${feature.iconColor}-600 flex-shrink-0 mt-1`}>
-              <svg
-                class="w-full h-full"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+        {
+          features.map((feature) => (
+            <div class="flex items-start space-x-4">
+              <div
+                class={`w-8 h-8 text-${feature.iconColor}-600 flex-shrink-0 mt-1`}
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d={feature.iconPath}
-                ></path>
-              </svg>
+                <svg
+                  class="w-full h-full"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d={feature.iconPath}
+                  />
+                </svg>
+              </div>
+              <div>
+                <Heading as="h3" variant="card" class="mb-2 text-gray-900">
+                  {feature.title}
+                </Heading>
+                <Text variant="body" color="muted">
+                  {feature.description}
+                </Text>
+              </div>
             </div>
-            <div>
-              <Heading as="h3" variant="card" class="mb-2 text-gray-900">
-                {feature.title}
-              </Heading>
-              <Text variant="body" color="muted">
-                {feature.description}
-              </Text>
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </Section>
 
   <!-- CTA Section -->
-  <CTA
+  <CtaSection
     title="¿Listo para Descubrir el Poder de Rhinoceros?"
     description="Únase a miles de profesionales que ya utilizan Rhinoceros para transformar sus ideas en realidad."
     primaryButton={{
       text: "Solicitar Demo Gratuita",
-      href: "/contacto"
+      href: "/contacto",
     }}
     secondaryButton={{
       text: "Ver Cursos de Rhinoceros",
-      href: "/cursos-de-capacitacion"
+      href: "/cursos-de-capacitacion",
     }}
     background="blue"
   />
