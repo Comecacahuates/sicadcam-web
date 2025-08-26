@@ -8,6 +8,7 @@ import CardGrid from "../components/layout/CardGrid.astro";
 import Card from "../components/ui/Card.astro";
 import StatCard from "../components/ui/StatCard.astro";
 import FeatureCard from "../components/ui/FeatureCard.astro";
+import ContentCard from "../components/ui/ContentCard.astro";
 import Button from "../components/ui/Button.astro";
 import ButtonGroup from "../components/ui/ButtonGroup.astro";
 import Text from "../components/ui/Text.astro";
@@ -117,31 +118,34 @@ import "../styles/global.css";
     </div>
 
     <CardGrid columns="3">
-      <FeatureCard
+      <ContentCard
         title="Soluciones de Software CAD/CAM"
         description="Ofrecemos una selección de software líder para diseño y fabricación digital, incluyendo Rhinoceros, Grasshopper, RhinoCAM y Mesh2Surface."
-        imageSrc="https://placehold.co/300x200?text=Software+CAD/CAM"
+        imageSrc="https://placehold.co/600x400?text=Software+CAD/CAM"
         imageAlt="Software CAD/CAM"
         buttonText="Explorar Software"
         buttonHref="/soluciones-de-software-cad-cam"
+        variant="default"
       />
 
-      <FeatureCard
+      <ContentCard
         title="Servicios de Fabricación Digital"
         description="Transformamos sus ideas en realidad con servicios de fabricación digital de vanguardia, incluyendo modelado 3D, maquinado CNC e impresión 3D."
-        imageSrc="https://placehold.co/300x200?text=Fabricación+Digital"
+        imageSrc="https://placehold.co/600x400?text=Fabricación+Digital"
         imageAlt="Servicios de Fabricación Digital"
         buttonText="Conocer Servicios"
         buttonHref="/servicios-de-fabricacion-digital"
+        variant="default"
       />
 
-      <FeatureCard
+      <ContentCard
         title="Cursos de Capacitación"
         description="Potencie sus habilidades con cursos especializados en modelado 3D con Rhinoceros, diseño paramétrico con Grasshopper y maquinado CNC."
-        imageSrc="https://placehold.co/300x200?text=Cursos+de+Capacitación"
+        imageSrc="https://placehold.co/600x400?text=Cursos+de+Capacitación"
         imageAlt="Cursos de Capacitación"
         buttonText="Ver Cursos"
         buttonHref="/cursos-de-capacitacion"
+        variant="default"
       />
     </CardGrid>
   </Section>
