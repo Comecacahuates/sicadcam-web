@@ -1,11 +1,24 @@
 ---
-import type {
-  ButtonProps,
-  ButtonVariant,
-  ButtonSize,
-} from "../../props/button.ts";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "ghost"
+  | "white"
+  | "white-outline";
 
-export type Props = ButtonProps;
+export type ButtonSize = "sm" | "md" | "lg";
+
+export type ButtonType = "button" | "submit" | "reset";
+
+export interface Props {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  type?: ButtonType;
+  href?: string;
+  disabled?: boolean;
+  class?: string;
+}
 
 const {
   variant = "primary",

@@ -2,19 +2,17 @@
 import Container from "../layout/Container.astro";
 import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
-import CtaButtons from "../ui/CtaButtons.astro";
+import CtaButtons, {
+  type Props as CtaButtonsProps,
+} from "../ui/CtaButtons.astro";
+
+type A = CtaButtonsProps["size"];
 
 export interface Props {
   title: string;
-  description?: string;
-  primaryCta?: {
-    text: string;
-    href: string;
-  };
-  secondaryCta?: {
-    text: string;
-    href: string;
-  };
+  description: string;
+  primaryCta: CtaButtonsProps["primaryCta"];
+  secondaryCta?: CtaButtonsProps["secondaryCta"];
   background?: "blue" | "dark" | "gradient";
   class?: string;
 }
@@ -42,18 +40,9 @@ const backgroundClasses = {
         {title}
       </Heading>
 
-      {
-        description && (
-          <Text
-            variant="lead"
-            size="xl"
-            color="white"
-            class="text-blue-100 mb-8"
-          >
-            {description}
-          </Text>
-        )
-      }
+      <Text variant="lead" size="xl" color="white" class="text-blue-100 mb-8">
+        {description}
+      </Text>
 
       <CtaButtons
         primaryCta={primaryCta}

@@ -1,23 +1,18 @@
 ---
-import Button from "./Button.astro";
-import ButtonGroup from "./ButtonGroup.astro";
-import type { ButtonVariant, ButtonSize } from "../../props/button.ts";
+import Button, { type Props as ButtonProps } from "./Button.astro";
+import ButtonGroup, {
+  type Props as ButtonGroupProps,
+} from "./ButtonGroup.astro";
 
 type Theme = "light" | "dark";
 
+type CtaButtonProps = Pick<ButtonProps, "href" | "variant"> & { text: string };
+
 export interface Props {
-  primaryCta?: {
-    text: string;
-    href: string;
-    variant?: ButtonVariant;
-  };
-  secondaryCta?: {
-    text: string;
-    href: string;
-    variant?: ButtonVariant;
-  };
-  alignment?: "start" | "center" | "end";
-  size?: ButtonSize;
+  primaryCta: CtaButtonProps;
+  secondaryCta?: CtaButtonProps;
+  alignment?: ButtonGroupProps["alignment"];
+  size?: ButtonProps["size"];
   theme?: Theme;
   class?: string;
 }
@@ -30,48 +25,21 @@ const {
   theme = "light",
   class: className = "",
 } = Astro.props;
-
-// Auto-determine button variants based on theme if not explicitly set
-const getVariants = (theme: Theme): { primary: ButtonVariant; secondary: ButtonVariant } => {
-  if (theme === "dark") {
-    return {
-      primary: "white",
-      secondary: "white-outline",
-    };
-  }
-  return {
-    primary: "primary",
-    secondary: "outline",
-  };
-};
-
-const variants = getVariants(theme);
-
-// Only render if at least one CTA is provided
-const shouldRender = primaryCta || secondaryCta;
 ---
 
-{
-  shouldRender && (
-    <ButtonGroup alignment={alignment} class={className}>
-      {primaryCta && (
-        <Button
-          href={primaryCta.href}
-          variant={primaryCta.variant || variants.primary}
-          size={size}
-        >
-          {primaryCta.text}
-        </Button>
-      )}
-      {secondaryCta && (
-        <Button
-          href={secondaryCta.href}
-          variant={secondaryCta.variant || variants.secondary}
-          size={size}
-        >
-          {secondaryCta.text}
-        </Button>
-      )}
-    </ButtonGroup>
-  )
-}
+<ButtonGroup alignment={alignment} class={className}>
+  <Button href={primaryCta.href} variant={primaryCta.variant} size={size}>
+    {primaryCta.text}
+  </Button>
+  {
+    secondaryCta && (
+      <Button
+        href={secondaryCta.href}
+        variant={secondaryCta.variant}
+        size={size}
+      >
+        {secondaryCta.text}
+      </Button>
+    )
+  }
+</ButtonGroup>
