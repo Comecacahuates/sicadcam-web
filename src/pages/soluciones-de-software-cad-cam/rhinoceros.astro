@@ -2,6 +2,7 @@
 import Layout from "../../components/layout/Layout.astro";
 import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
+import ContentSection from "../../components/content/ContentSection.astro";
 import SectionHeader from "../../components/content/SectionHeader.astro";
 import CTA from "../../components/content/CTA.astro";
 import Section from "../../components/layout/Section.astro";
@@ -131,91 +132,77 @@ const industries = [
   </Section>
 
   <!-- Ease of Use Section -->
-  <Section background="gray">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+Interface"
-      imageAlt="Interfaz intuitiva de Rhinoceros"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6">
-          Facilidad de Uso
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Rhinoceros destaca por su curva de aprendizaje accesible y una interfaz intuitiva.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Diseñado para ser dominado rápidamente por usuarios de todos los niveles, no requiere experiencia previa en modelado 3D, invitando a una exploración y creación gratificante desde el primer momento.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button href="/cursos-de-capacitacion" variant="primary">
-            Cursos de Rhinoceros
-          </Button>
-          <Button href="/contacto" variant="outline">
-            Solicitar Información
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Facilidad de Uso"
+    leadText="Rhinoceros destaca por su curva de aprendizaje accesible y una interfaz intuitiva."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+Interface"
+    imageAlt="Interfaz intuitiva de Rhinoceros"
+    imagePosition="right"
+    primaryButton={{
+      text: "Cursos de Rhinoceros",
+      href: "/cursos-de-capacitacion",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Solicitar Información",
+      href: "/contacto",
+      variant: "outline"
+    }}
+    background="gray"
+  >
+    <Text variant="body" color="muted">
+      Diseñado para ser dominado rápidamente por usuarios de todos los niveles, no requiere experiencia previa en modelado 3D, invitando a una exploración y creación gratificante desde el primer momento.
+    </Text>
+  </ContentSection>
 
   <!-- Versatility and Compatibility Section -->
-  <Section background="white">
-    <TwoColumn
-      imagePosition="left"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+Compatibility"
-      imageAlt="Compatibilidad de Rhinoceros con múltiples formatos"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6">
-          Versatilidad y Compatibilidad
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Compatible con Windows y Mac y con los formatos de geometría de la mayoría de software CAD/CAM.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          La versatilidad de Rhinoceros lo convierte en la herramienta ideal para profesionales de arquitectura, diseño industrial, joyería, calzado y diseño de moldes, permitiendo un flujo de trabajo colaborativo y un modelado 3D preciso y libre.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button href="/contacto" variant="primary">
-            Consultar Compatibilidad
-          </Button>
-          <Button href="/servicios-de-fabricacion-digital" variant="outline">
-            Servicios CAD/CAM
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Versatilidad y Compatibilidad"
+    leadText="Compatible con Windows y Mac y con los formatos de geometría de la mayoría de software CAD/CAM."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+Compatibility"
+    imageAlt="Compatibilidad de Rhinoceros con múltiples formatos"
+    imagePosition="left"
+    primaryButton={{
+      text: "Consultar Compatibilidad",
+      href: "/contacto",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Servicios CAD/CAM",
+      href: "/servicios-de-fabricacion-digital",
+      variant: "outline"
+    }}
+    background="white"
+  >
+    <Text variant="body" color="muted">
+      La versatilidad de Rhinoceros lo convierte en la herramienta ideal para profesionales de arquitectura, diseño industrial, joyería, calzado y diseño de moldes, permitiendo un flujo de trabajo colaborativo y un modelado 3D preciso y libre.
+    </Text>
+  </ContentSection>
 
   <!-- Plugins Extensibility Section -->
-  <Section background="gray">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+Plugins"
-      imageAlt="Ecosistema de plugins de Rhinoceros"
-    >
-      <div slot="content">
-        <Heading as="h3" variant="section" class="mb-6">
-          Extensibilidad con Plugins
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          La funcionalidad de Rhinoceros se expande con un vasto ecosistema de plugins.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          La plataforma Food4Rhino ofrece cientos de opciones gratuitas y de pago para aplicaciones especializadas, mientras que su API de desarrollo y completa documentación permiten crear plugins a medida para cualquier necesidad.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button href="/soluciones-de-software-cad-cam/grasshopper" variant="primary">
-            Conoce Grasshopper
-          </Button>
-          <Button href="/contacto" variant="outline">
-            Plugins Personalizados
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Extensibilidad con Plugins"
+    leadText="La funcionalidad de Rhinoceros se expande con un vasto ecosistema de plugins."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+Plugins"
+    imageAlt="Ecosistema de plugins de Rhinoceros"
+    imagePosition="right"
+    primaryButton={{
+      text: "Conoce Grasshopper",
+      href: "/soluciones-de-software-cad-cam/grasshopper",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Plugins Personalizados",
+      href: "/contacto",
+      variant: "outline"
+    }}
+    background="gray"
+    titleLevel="h3"
+  >
+    <Text variant="body" color="muted">
+      La plataforma Food4Rhino ofrece cientos de opciones gratuitas y de pago para aplicaciones especializadas, mientras que su API de desarrollo y completa documentación permiten crear plugins a medida para cualquier necesidad.
+    </Text>
+  </ContentSection>
 
   <!-- Section Separator -->
   <SectionSeparator
@@ -235,62 +222,52 @@ const industries = [
   </SectionSeparator>
 
   <!-- Affordable Price Section -->
-  <Section background="white">
-    <TwoColumn
-      imagePosition="left"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+Value"
-      imageAlt="Precio accesible de Rhinoceros"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6">
-          Precio Accesible
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Con una licencia perpetua de pago único, Rhinoceros es una alternativa de gran valor a las costosas suscripciones de software.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Su accesibilidad se refuerza con precios especiales para estudiantes, profesores y universidades.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button href="/contacto" variant="primary">
-            Consultar Precios
-          </Button>
-          <Button href="/contacto" variant="outline">
-            Descuentos Educativos
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Precio Accesible"
+    leadText="Con una licencia perpetua de pago único, Rhinoceros es una alternativa de gran valor a las costosas suscripciones de software."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+Value"
+    imageAlt="Precio accesible de Rhinoceros"
+    imagePosition="left"
+    primaryButton={{
+      text: "Consultar Precios",
+      href: "/contacto",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Descuentos Educativos",
+      href: "/contacto",
+      variant: "outline"
+    }}
+    background="white"
+  >
+    <Text variant="body" color="muted">
+      Su accesibilidad se refuerza con precios especiales para estudiantes, profesores y universidades.
+    </Text>
+  </ContentSection>
 
   <!-- Support and Community Section -->
-  <Section background="gray">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+Community"
-      imageAlt="Comunidad y soporte de Rhinoceros"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6">
-          Soporte y Comunidad Activa
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Rhinoceros cuenta con un sólido ecosistema de soporte.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Además de la extensa documentación oficial, existe una comunidad global y activa de usuarios y desarrolladores siempre dispuesta a compartir conocimientos y resolver dudas a través del foro de McNeel, asegurando que siempre encuentres la ayuda que necesitas.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button href="/contacto" variant="primary">
-            Soporte Técnico
-          </Button>
-          <Button href="/cursos-de-capacitacion" variant="outline">
-            Capacitación Oficial
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Soporte y Comunidad Activa"
+    leadText="Rhinoceros cuenta con un sólido ecosistema de soporte."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+Community"
+    imageAlt="Comunidad y soporte de Rhinoceros"
+    imagePosition="right"
+    primaryButton={{
+      text: "Soporte Técnico",
+      href: "/contacto",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Capacitación Oficial",
+      href: "/cursos-de-capacitacion",
+      variant: "outline"
+    }}
+    background="gray"
+  >
+    <Text variant="body" color="muted">
+      Además de la extensa documentación oficial, existe una comunidad global y activa de usuarios y desarrolladores siempre dispuesta a compartir conocimientos y resolver dudas a través del foro de McNeel, asegurando que siempre encuentres la ayuda que necesitas.
+    </Text>
+  </ContentSection>
 
   <!-- Key Features -->
   <Section background="white">

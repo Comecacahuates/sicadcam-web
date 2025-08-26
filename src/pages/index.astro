@@ -2,6 +2,7 @@
 import Layout from "../components/layout/Layout.astro";
 import Hero from "../components/content/Hero.astro";
 import TwoColumn from "../components/content/TwoColumn.astro";
+import ContentSection from "../components/content/ContentSection.astro";
 import SectionHeader from "../components/content/SectionHeader.astro";
 import CTA from "../components/content/CTA.astro";
 import Section from "../components/layout/Section.astro";
@@ -36,27 +37,19 @@ import "../styles/global.css";
   />
 
   <!-- About Section -->
-  <Section background="white" padding="lg">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=Acerca+de+Nosotros"
-      imageAlt="Acerca de nosotros"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6">
-          Acerca de Nosotros
-        </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          En SICADCAM, fusionamos más de tres décadas de experiencia en
-          ingeniería, diseño y fabricación digital para ofrecer soluciones
-          innovadoras y personalizadas. Nuestro equipo, compuesto por expertos
-          con profunda trayectoria y conocimiento en sistemas CAD/CAM, está
-          comprometido con la excelencia y la vanguardia tecnológica.
-        </Text>
-        <Button href="/acerca-de" variant="primary"> Conocer más </Button>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Acerca de Nosotros"
+    leadText="En SICADCAM, fusionamos más de tres décadas de experiencia en ingeniería, diseño y fabricación digital para ofrecer soluciones innovadoras y personalizadas. Nuestro equipo, compuesto por expertos con profunda trayectoria y conocimiento en sistemas CAD/CAM, está comprometido con la excelencia y la vanguardia tecnológica."
+    imageSrc="https://placehold.co/600x400?text=Acerca+de+Nosotros"
+    imageAlt="Acerca de nosotros"
+    imagePosition="right"
+    primaryButton={{
+      text: "Conocer más",
+      href: "/acerca-de",
+      variant: "primary"
+    }}
+    background="white"
+  />
 
   <!-- Experience Section -->
   <Section background="gray" padding="lg">
@@ -147,33 +140,26 @@ import "../styles/global.css";
   </Section>
 
   <!-- Commitment Section -->
-  <Section background="blue" padding="lg">
-    <TwoColumn
-      imagePosition="left"
-      imageSrc="https://placehold.co/600x400?text=Nuestro+Compromiso"
-      imageAlt="Nuestro compromiso"
-      imageClass="bg-blue-500"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" color="white" class="mb-6">
-          Nuestro Compromiso
-        </Heading>
-        <Text variant="lead" color="white" class="mb-6 text-blue-100">
-          La combinación de nuestra profunda experiencia práctica en ingeniería
-          y fabricación nos permite ofrecer soluciones integrales, desde el
-          concepto y el diseño, hasta la producción y la capacitación.
-        </Text>
-        <Text variant="body" color="white" class="mb-8 text-blue-200">
-          Estamos aquí para apoyar a su empresa en cada etapa de sus proyectos
-          de ingeniería y fabricación digital, con un compromiso inquebrantable
-          con la calidad y la innovación.
-        </Text>
-        <Button href="/contacto" variant="white-outline">
-          Contactar Ahora
-        </Button>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Nuestro Compromiso"
+    leadText="La combinación de nuestra profunda experiencia práctica en ingeniería y fabricación nos permite ofrecer soluciones integrales, desde el concepto y el diseño, hasta la producción y la capacitación."
+    imageSrc="https://placehold.co/600x400?text=Nuestro+Compromiso"
+    imageAlt="Nuestro compromiso"
+    imagePosition="left"
+    imageClass="bg-blue-500"
+    primaryButton={{
+      text: "Contactar Ahora",
+      href: "/contacto",
+      variant: "white-outline"
+    }}
+    background="blue"
+  >
+    <Text variant="body" color="white" class="text-blue-200">
+      Estamos aquí para apoyar a su empresa en cada etapa de sus proyectos
+      de ingeniería y fabricación digital, con un compromiso inquebrantable
+      con la calidad y la innovación.
+    </Text>
+  </ContentSection>
 
   <!-- CTA Section -->
   <CTA

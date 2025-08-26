@@ -2,6 +2,7 @@
 import Layout from "../../components/layout/Layout.astro";
 import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
+import ContentSection from "../../components/content/ContentSection.astro";
 import SectionHeader from "../../components/content/SectionHeader.astro";
 import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
@@ -76,70 +77,57 @@ import "../../styles/global.css";
   </Section>
 
   <!-- Rhinoceros Section -->
-  <Section background="gray" id="software">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=Rhinoceros+3D"
-      imageAlt="Rhinoceros 3D Software"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6"> Rhinoceros </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Rhinoceros es el software líder para el modelado 3D de formas libres y
-          superficies complejas, ideal para profesionales de arquitectura,
-          diseño industrial, diseño automotriz, joyería y más.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Permite crear geometrías precisas para cualquier proyecto, desde
-          conceptos iniciales hasta modelos de producción listos para
-          fabricación.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button
-            href="/soluciones-de-software-cad-cam/rhinoceros"
-            variant="primary"
-          >
-            Descubre Rhinoceros
-          </Button>
-          <Button href="/contacto" variant="outline"> Solicitar Demo </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Rhinoceros"
+    leadText="Rhinoceros es el software líder para el modelado 3D de formas libres y superficies complejas, ideal para profesionales de arquitectura, diseño industrial, diseño automotriz, joyería y más."
+    imageSrc="https://placehold.co/600x400?text=Rhinoceros+3D"
+    imageAlt="Rhinoceros 3D Software"
+    imagePosition="right"
+    primaryButton={{
+      text: "Descubre Rhinoceros",
+      href: "/soluciones-de-software-cad-cam/rhinoceros",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Solicitar Demo",
+      href: "/contacto",
+      variant: "outline"
+    }}
+    background="gray"
+    id="software"
+  >
+    <Text variant="body" color="muted">
+      Permite crear geometrías precisas para cualquier proyecto, desde
+      conceptos iniciales hasta modelos de producción listos para
+      fabricación.
+    </Text>
+  </ContentSection>
 
   <!-- Grasshopper Section -->
-  <Section background="white">
-    <TwoColumn
-      imagePosition="left"
-      imageSrc="https://placehold.co/600x400?text=Grasshopper+Parametric"
-      imageAlt="Grasshopper Diseño Paramétrico"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6"> Grasshopper </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Grasshopper, integrado con Rhinoceros, es una herramienta de diseño
-          paramétrico visual que permite explorar formas y geometrías complejas
-          mediante la definición de relaciones y algoritmos.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Es ideal para la automatización de procesos de diseño y la creación de
-          variaciones infinitas, permitiendo optimización y exploración de
-          alternativas de diseño de manera eficiente.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button
-            href="/soluciones-de-software-cad-cam/grasshopper"
-            variant="primary"
-          >
-            Conoce Grasshopper
-          </Button>
-          <Button href="/cursos-de-capacitacion" variant="outline">
-            Ver Cursos
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Grasshopper"
+    leadText="Grasshopper, integrado con Rhinoceros, es una herramienta de diseño paramétrico visual que permite explorar formas y geometrías complejas mediante la definición de relaciones y algoritmos."
+    imageSrc="https://placehold.co/600x400?text=Grasshopper+Parametric"
+    imageAlt="Grasshopper Diseño Paramétrico"
+    imagePosition="left"
+    primaryButton={{
+      text: "Conoce Grasshopper",
+      href: "/soluciones-de-software-cad-cam/grasshopper",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Ver Cursos",
+      href: "/cursos-de-capacitacion",
+      variant: "outline"
+    }}
+    background="white"
+  >
+    <Text variant="body" color="muted">
+      Es ideal para la automatización de procesos de diseño y la creación de
+      variaciones infinitas, permitiendo optimización y exploración de
+      alternativas de diseño de manera eficiente.
+    </Text>
+  </ContentSection>
 
   <!-- Section Separator -->
   <SectionSeparator
@@ -160,72 +148,56 @@ import "../../styles/global.css";
   </SectionSeparator>
 
   <!-- RhinoCAM Section -->
-  <Section background="white">
-    <TwoColumn
-      imagePosition="right"
-      imageSrc="https://placehold.co/600x400?text=RhinoCAM+CNC"
-      imageAlt="RhinoCAM Software CAM"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6"> RhinoCAM </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          RhinoCAM es la solución CAM integrada en Rhinoceros para la
-          preparación y generación de trayectorias de herramientas para
-          maquinado CNC.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Permite transformar diseños 3D en piezas físicas con precisión,
-          soportando fresado, torneado y más. Integración perfecta con
-          Rhinoceros para un flujo de trabajo sin interrupciones.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button
-            href="/soluciones-de-software-cad-cam/rhinocam"
-            variant="primary"
-          >
-            Más sobre RhinoCAM
-          </Button>
-          <Button href="/servicios-de-fabricacion-digital" variant="outline">
-            Servicios CNC
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="RhinoCAM"
+    leadText="RhinoCAM es la solución CAM integrada en Rhinoceros para la preparación y generación de trayectorias de herramientas para maquinado CNC."
+    imageSrc="https://placehold.co/600x400?text=RhinoCAM+CNC"
+    imageAlt="RhinoCAM Software CAM"
+    imagePosition="right"
+    primaryButton={{
+      text: "Más sobre RhinoCAM",
+      href: "/soluciones-de-software-cad-cam/rhinocam",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Servicios CNC",
+      href: "/servicios-de-fabricacion-digital",
+      variant: "outline"
+    }}
+    background="white"
+  >
+    <Text variant="body" color="muted">
+      Permite transformar diseños 3D en piezas físicas con precisión,
+      soportando fresado, torneado y más. Integración perfecta con
+      Rhinoceros para un flujo de trabajo sin interrupciones.
+    </Text>
+  </ContentSection>
 
   <!-- Mesh2Surface Section -->
-  <Section background="gray">
-    <TwoColumn
-      imagePosition="left"
-      imageSrc="https://placehold.co/600x400?text=Mesh2Surface+Reverse"
-      imageAlt="Mesh2Surface Ingeniería Inversa"
-    >
-      <div slot="content">
-        <Heading as="h2" variant="section" class="mb-6"> Mesh2Surface </Heading>
-        <Text variant="lead" color="muted" class="mb-6">
-          Mesh2Surface es una herramienta esencial para la ingeniería inversa,
-          que permite transformar datos de escaneo 3D (nubes de puntos o mallas)
-          en modelos de superficie CAD precisos y editables.
-        </Text>
-        <Text variant="body" color="muted" class="mb-8">
-          Trabajando directamente dentro de Rhinoceros, facilita la
-          reconstrucción de geometrías complejas a partir de datos escaneados,
-          ideal para restauración, análisis y rediseño de piezas existentes.
-        </Text>
-        <ButtonGroup alignment="start">
-          <Button
-            href="/soluciones-de-software-cad-cam/mesh2surface"
-            variant="primary"
-          >
-            Explora Mesh2Surface
-          </Button>
-          <Button href="/servicios-de-fabricacion-digital" variant="outline">
-            Servicios de Escaneo
-          </Button>
-        </ButtonGroup>
-      </div>
-    </TwoColumn>
-  </Section>
+  <ContentSection
+    title="Mesh2Surface"
+    leadText="Mesh2Surface es una herramienta esencial para la ingeniería inversa, que permite transformar datos de escaneo 3D (nubes de puntos o mallas) en modelos de superficie CAD precisos y editables."
+    imageSrc="https://placehold.co/600x400?text=Mesh2Surface+Reverse"
+    imageAlt="Mesh2Surface Ingeniería Inversa"
+    imagePosition="left"
+    primaryButton={{
+      text: "Explora Mesh2Surface",
+      href: "/soluciones-de-software-cad-cam/mesh2surface",
+      variant: "primary"
+    }}
+    secondaryButton={{
+      text: "Servicios de Escaneo",
+      href: "/servicios-de-fabricacion-digital",
+      variant: "outline"
+    }}
+    background="gray"
+  >
+    <Text variant="body" color="muted">
+      Trabajando directamente dentro de Rhinoceros, facilita la
+      reconstrucción de geometrías complejas a partir de datos escaneados,
+      ideal para restauración, análisis y rediseño de piezas existentes.
+    </Text>
+  </ContentSection>
 
   <!-- Industries Section -->
   <Section background="white">
