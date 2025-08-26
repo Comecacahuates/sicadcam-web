@@ -2,6 +2,7 @@
 import Layout from "../../components/layout/Layout.astro";
 import PageHeader from "../../components/content/PageHeader.astro";
 import TwoColumn from "../../components/content/TwoColumn.astro";
+import CTA from "../../components/content/CTA.astro";
 import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
 import CardGrid from "../../components/layout/CardGrid.astro";
@@ -380,30 +381,17 @@ const industries = [
   </Section>
 
   <!-- CTA Section -->
-  <Section background="blue">
-    <div class="text-center">
-      <Heading as="h2" variant="section" color="white" class="mb-4">
-        ¿Listo para Descubrir el Poder de Rhinoceros?
-      </Heading>
-      <Text
-        variant="lead"
-        color="white"
-        class="mb-8 max-w-2xl mx-auto text-blue-100"
-      >
-        Únase a miles de profesionales que ya utilizan Rhinoceros para transformar sus ideas en realidad.
-      </Text>
-      <ButtonGroup alignment="center">
-        <Button href="/contacto" variant="white" size="lg">
-          Solicitar Demo Gratuita
-        </Button>
-        <Button
-          href="/cursos-de-capacitacion"
-          variant="white-outline"
-          size="lg"
-        >
-          Ver Cursos de Rhinoceros
-        </Button>
-      </ButtonGroup>
-    </div>
-  </Section>
+  <CTA
+    title="¿Listo para Descubrir el Poder de Rhinoceros?"
+    description="Únase a miles de profesionales que ya utilizan Rhinoceros para transformar sus ideas en realidad."
+    primaryButton={{
+      text: "Solicitar Demo Gratuita",
+      href: "/contacto"
+    }}
+    secondaryButton={{
+      text: "Ver Cursos de Rhinoceros",
+      href: "/cursos-de-capacitacion"
+    }}
+    background="blue"
+  />
 </Layout>

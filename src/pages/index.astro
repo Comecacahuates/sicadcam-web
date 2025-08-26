@@ -2,6 +2,7 @@
 import Layout from "../components/layout/Layout.astro";
 import Hero from "../components/content/Hero.astro";
 import TwoColumn from "../components/content/TwoColumn.astro";
+import CTA from "../components/content/CTA.astro";
 import Section from "../components/layout/Section.astro";
 import SectionSeparator from "../components/layout/SectionSeparator.astro";
 import CardGrid from "../components/layout/CardGrid.astro";
@@ -180,31 +181,17 @@ import "../styles/global.css";
   </Section>
 
   <!-- CTA Section -->
-  <Section background="dark" padding="lg">
-    <div class="text-center">
-      <Heading as="h2" variant="section" color="white" class="mb-4">
-        ¿Listo para comenzar su proyecto?
-      </Heading>
-      <Text
-        variant="lead"
-        color="white"
-        class="mb-8 max-w-2xl mx-auto text-slate-300"
-      >
-        Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas
-        del concepto a la realidad.
-      </Text>
-      <ButtonGroup alignment="center">
-        <Button href="/contacto" variant="primary" size="lg">
-          Contactar
-        </Button>
-        <Button
-          href="/cursos-de-capacitacion"
-          variant="white-outline"
-          size="lg"
-        >
-          Ver Cursos
-        </Button>
-      </ButtonGroup>
-    </div>
-  </Section>
+  <CTA
+    title="¿Listo para comenzar su proyecto?"
+    description="Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas del concepto a la realidad."
+    primaryButton={{
+      text: "Contactar",
+      href: "/contacto"
+    }}
+    secondaryButton={{
+      text: "Ver Cursos",
+      href: "/cursos-de-capacitacion"
+    }}
+    background="dark"
+  />
 </Layout>

@@ -1,0 +1,96 @@
+---
+import Section from '../layout/Section.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import Button from '../ui/Button.astro';
+import ButtonGroup from '../ui/ButtonGroup.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  primaryButton: {
+    text: string;
+    href: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+  };
+  background?: 'blue' | 'dark' | 'gray' | 'white';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const { 
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+  background = 'blue',
+  padding = 'lg',
+  class: className = ''
+} = Astro.props;
+
+// Define color schemes for different backgrounds
+const colorSchemes = {
+  blue: {
+    titleColor: 'white',
+    textColor: 'white',
+    textClass: 'text-blue-100',
+    primaryVariant: 'white',
+    secondaryVariant: 'white-outline'
+  },
+  dark: {
+    titleColor: 'white',
+    textColor: 'white', 
+    textClass: 'text-slate-300',
+    primaryVariant: 'primary',
+    secondaryVariant: 'white-outline'
+  },
+  gray: {
+    titleColor: 'default',
+    textColor: 'muted',
+    textClass: 'text-gray-600',
+    primaryVariant: 'primary',
+    secondaryVariant: 'outline'
+  },
+  white: {
+    titleColor: 'default',
+    textColor: 'muted',
+    textClass: 'text-gray-600',
+    primaryVariant: 'primary',
+    secondaryVariant: 'outline'
+  }
+};
+
+const scheme = colorSchemes[background];
+---
+
+<Section background={background} padding={padding} class={className}>
+  <div class="text-center">
+    <Heading as="h2" variant="section" color={scheme.titleColor} class="mb-4">
+      {title}
+    </Heading>
+    <Text
+      variant="lead"
+      color={scheme.textColor}
+      class={`mb-8 max-w-2xl mx-auto ${scheme.textClass}`}
+    >
+      {description}
+    </Text>
+    <ButtonGroup alignment="center">
+      <Button href={primaryButton.href} variant={scheme.primaryVariant} size="lg">
+        {primaryButton.text}
+      </Button>
+      {secondaryButton && (
+        <Button
+          href={secondaryButton.href}
+          variant={scheme.secondaryVariant}
+          size="lg"
+        >
+          {secondaryButton.text}
+        </Button>
+      )}
+    </ButtonGroup>
+  </div>
+</Section>
