@@ -1,5 +1,6 @@
 ---
 import Container from '../layout/Container.astro';
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
 import Button from '../ui/Button.astro';
 import ButtonGroup from '../ui/ButtonGroup.astro';
 import Text from '../ui/Text.astro';
@@ -51,26 +52,10 @@ const paddingClass = compact ? 'lg' : 'xl';
     <div class="max-w-4xl">
       <!-- Breadcrumbs -->
       {breadcrumbs && (
-        <nav class="mb-6" aria-label="Breadcrumb">
-          <ol class={`flex items-center space-x-2 text-sm ${(background === 'blue' || background === 'green') ? 'text-blue-200' : 'text-slate-500'}`}>
-            {breadcrumbs.map((crumb, index) => (
-              <li class="flex items-center">
-                {index > 0 && (
-                  <svg class={`w-4 h-4 mx-2 ${(background === 'blue' || background === 'green') ? 'text-blue-300' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                )}
-                {crumb.href ? (
-                  <a href={crumb.href} class={`transition-colors ${(background === 'blue' || background === 'green') ? 'hover:text-white' : 'hover:text-blue-600'}`}>
-                    {crumb.text}
-                  </a>
-                ) : (
-                  <span class={`font-medium ${(background === 'blue' || background === 'green') ? 'text-white' : 'text-slate-700'}`}>{crumb.text}</span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <Breadcrumbs 
+          items={breadcrumbs} 
+          theme={(background === 'blue' || background === 'green') ? 'dark' : 'light'} 
+        />
       )}
 
       <!-- Subtitle -->

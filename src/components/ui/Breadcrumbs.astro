@@ -1,0 +1,67 @@
+---
+export interface Props {
+  items: Array<{ text: string; href?: string }>;
+  theme?: 'light' | 'dark';
+  class?: string;
+}
+
+const {
+  items,
+  theme = 'light',
+  class: className = ''
+} = Astro.props;
+
+// Color schemes for different themes
+const colorSchemes = {
+  light: {
+    textColor: 'text-slate-500',
+    separatorColor: 'text-slate-400',
+    linkHoverColor: 'hover:text-blue-600',
+    currentColor: 'text-slate-700'
+  },
+  dark: {
+    textColor: 'text-blue-200',
+    separatorColor: 'text-blue-300',
+    linkHoverColor: 'hover:text-white',
+    currentColor: 'text-white'
+  }
+};
+
+const scheme = colorSchemes[theme];
+---
+
+<nav class={`mb-6 ${className}`} aria-label="Breadcrumb">
+  <ol class={`flex items-center text-sm ${scheme.textColor}`}>
+    {items.map((crumb, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <svg
+            class={`w-4 h-4 mx-2 ${scheme.separatorColor}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        )}
+        {crumb.href ? (
+          <a
+            href={crumb.href}
+            class={`transition-colors ${scheme.linkHoverColor}`}
+          >
+            {crumb.text}
+          </a>
+        ) : (
+          <span class={`font-medium ${scheme.currentColor}`}>
+            {crumb.text}
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
