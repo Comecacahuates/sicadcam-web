@@ -12,11 +12,52 @@ import Card from "../components/ui/Card.astro";
 import StatCard from "../components/ui/StatCard.astro";
 import FeatureCard from "../components/ui/FeatureCard.astro";
 import ContentCard from "../components/ui/ContentCard.astro";
+import IndustryGrid from "../components/ui/IndustryGrid.astro";
 import Button from "../components/ui/Button.astro";
 import ButtonGroup from "../components/ui/ButtonGroup.astro";
 import Text from "../components/ui/Text.astro";
 import Heading from "../components/ui/Heading.astro";
 import "../styles/global.css";
+
+// Industries data with images
+const industries = [
+  {
+    title: "Arquitectura",
+    description: "Diseño paramétrico y modelado de formas complejas para proyectos arquitectónicos innovadores",
+    imageSrc: "https://placehold.co/600x400?text=Arquitectura+Moderna",
+    imageAlt: "Proyecto arquitectónico moderno diseñado con nuestras herramientas"
+  },
+  {
+    title: "Diseño Industrial",
+    description: "Desarrollo de productos y prototipos con precisión y creatividad",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Industrial",
+    imageAlt: "Producto industrial diseñado con nuestras herramientas"
+  },
+  {
+    title: "Joyería",
+    description: "Diseño de precisión y fabricación de joyas con detalles intrincados",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Joyería",
+    imageAlt: "Joya diseñada con nuestras herramientas"
+  },
+  {
+    title: "Calzado",
+    description: "Diseño y desarrollo de calzado deportivo y de moda con formas ergonómicas",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Calzado",
+    imageAlt: "Calzado deportivo diseñado con nuestras herramientas"
+  },
+  {
+    title: "Automotriz",
+    description: "Diseño de componentes y carrocerías con superficies complejas",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Automotriz",
+    imageAlt: "Componente automotriz diseñado con nuestras herramientas"
+  },
+  {
+    title: "Diseño de Moldes",
+    description: "Creación de moldes para inyección y fundición con geometrías precisas",
+    imageSrc: "https://placehold.co/600x400?text=Diseño+Moldes",
+    imageAlt: "Molde industrial diseñado con nuestras herramientas"
+  }
+];
 ---
 
 <Layout title="SICADCAM - Servicios de Ingeniería CAD-CAM">
@@ -160,6 +201,20 @@ import "../styles/global.css";
       con la calidad y la innovación.
     </Text>
   </ContentSection>
+
+  <!-- Industries Section -->
+  <Section background="gray">
+    <SectionHeader
+      title="Industrias que Atendemos"
+      description="Profesionales de diversas industrias confían en nuestras soluciones para sus proyectos más exigentes"
+    />
+
+    <IndustryGrid 
+      industries={industries} 
+      columns="3" 
+      imageAspect="video"
+    />
+  </Section>
 
   <!-- CTA Section -->
   <CTA

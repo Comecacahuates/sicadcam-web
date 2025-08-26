@@ -9,7 +9,6 @@ import Section from "../../components/layout/Section.astro";
 import SectionSeparator from "../../components/layout/SectionSeparator.astro";
 import CardGrid from "../../components/layout/CardGrid.astro";
 import ContentCard from "../../components/ui/ContentCard.astro";
-import IndustryGrid from "../../components/ui/IndustryGrid.astro";
 import Button from "../../components/ui/Button.astro";
 import ButtonGroup from "../../components/ui/ButtonGroup.astro";
 import Text from "../../components/ui/Text.astro";
@@ -53,46 +52,6 @@ const features = [
     description: "Disponible para Windows y Mac con la misma funcionalidad",
     iconColor: "indigo" as const,
     iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-  }
-];
-
-// Industries data with images
-const industries = [
-  {
-    title: "Arquitectura",
-    description: "Diseño paramétrico y modelado de formas complejas para proyectos arquitectónicos innovadores",
-    imageSrc: "https://placehold.co/600x400?text=Arquitectura+Moderna",
-    imageAlt: "Proyecto arquitectónico moderno diseñado con Rhinoceros"
-  },
-  {
-    title: "Diseño Industrial",
-    description: "Desarrollo de productos y prototipos con precisión y creatividad",
-    imageSrc: "https://placehold.co/600x400?text=Diseño+Industrial",
-    imageAlt: "Producto industrial diseñado con Rhinoceros"
-  },
-  {
-    title: "Joyería",
-    description: "Diseño de precisión y fabricación de joyas con detalles intrincados",
-    imageSrc: "https://placehold.co/600x400?text=Diseño+Joyería",
-    imageAlt: "Joya diseñada con Rhinoceros"
-  },
-  {
-    title: "Calzado",
-    description: "Diseño y desarrollo de calzado deportivo y de moda con formas ergonómicas",
-    imageSrc: "https://placehold.co/600x400?text=Diseño+Calzado",
-    imageAlt: "Calzado deportivo diseñado con Rhinoceros"
-  },
-  {
-    title: "Automotriz",
-    description: "Diseño de componentes y carrocerías con superficies complejas",
-    imageSrc: "https://placehold.co/600x400?text=Diseño+Automotriz",
-    imageAlt: "Componente automotriz diseñado con Rhinoceros"
-  },
-  {
-    title: "Diseño de Moldes",
-    description: "Creación de moldes para inyección y fundición con geometrías precisas",
-    imageSrc: "https://placehold.co/600x400?text=Diseño+Moldes",
-    imageAlt: "Molde industrial diseñado con Rhinoceros"
   }
 ];
 ---
@@ -307,40 +266,6 @@ const industries = [
         ))}
       </div>
     </div>
-  </Section>
-
-  <!-- Industries Section - Option 2: Industry Cards (Default) -->
-  <Section background="gray">
-    <SectionHeader
-      title="Industrias - Opción 2: Industry Cards (Recomendado)"
-      description="Tarjetas con imágenes - diseño clásico y profesional"
-    />
-
-    <CardGrid columns="3" breakpoints={{ md: "2", lg: "3" }}>
-      {industries.map((industry) => (
-        <ContentCard
-          title={industry.title}
-          description={industry.description}
-          imageSrc={industry.imageSrc}
-          imageAlt={industry.imageAlt}
-          variant="default"
-        />
-      ))}
-    </CardGrid>
-  </Section>
-
-  <!-- Industries Section - Option 4: Industry Grid (Clean) -->
-  <Section background="white">
-    <SectionHeader
-      title="Industrias - Opción 4: Industry Grid (Limpio)"
-      description="Grid limpio con efectos hover - minimalista y elegante"
-    />
-
-    <IndustryGrid 
-      industries={industries} 
-      columns="3" 
-      imageAspect="video"
-    />
   </Section>
 
   <!-- CTA Section -->
