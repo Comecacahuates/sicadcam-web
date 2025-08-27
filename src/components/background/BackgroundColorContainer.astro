@@ -1,15 +1,15 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Background = "white" | "gray" | "blue" | "green" | "dark";
+type BackgroundColor = "white" | "gray" | "blue" | "green" | "dark";
 
 export interface Props extends HTMLAttributes<"div"> {
-  background?: Background;
+  backgroundColor?: BackgroundColor;
 }
 
-const { background = "white", class: _class = "", ...rest } = Astro.props;
+const { backgroundColor: background = "white", class: _class = "", ...rest } = Astro.props;
 
-const backgroundClasses: Record<Background, string> = {
+const backgroundColorClasses: Record<BackgroundColor, string> = {
   white: "bg-white",
   gray: "bg-slate-100",
   blue: "bg-blue-600 text-white",
@@ -18,6 +18,6 @@ const backgroundClasses: Record<Background, string> = {
 };
 ---
 
-<div class:list={[backgroundClasses[background], _class]} {...rest}>
+<div class:list={[backgroundColorClasses[background], _class]} {...rest}>
   <slot />
 </div>
