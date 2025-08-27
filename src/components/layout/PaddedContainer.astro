@@ -1,0 +1,48 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Padding = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
+
+export interface Props extends HTMLAttributes<"div"> {
+  paddingX?: Padding;
+  paddingY?: Padding;
+}
+
+const {
+  paddingX = "md",
+  paddingY = "md",
+  class: _class,
+  ...rest
+} = Astro.props;
+
+const paddingXClasses: Record<Padding, string> = {
+  sm: "px-4",
+  md: "px-6",
+  lg: "px-8",
+  xl: "px-12",
+  "2xl": "px-16",
+  "3xl": "px-20",
+  "4xl": "px-24",
+  "5xl": "px-32",
+  "6xl": "px-40",
+};
+
+const paddingYClasses: Record<Padding, string> = {
+  sm: "py-4",
+  md: "py-8",
+  lg: "py-12",
+  xl: "py-16",
+  "2xl": "py-20",
+  "3xl": "py-24",
+  "4xl": "py-32",
+  "5xl": "py-40",
+  "6xl": "py-48",
+};
+---
+
+<div
+  class:list={[paddingXClasses[paddingX], paddingYClasses[paddingY], _class]}
+  {...rest}
+>
+  <slot />
+</div>
