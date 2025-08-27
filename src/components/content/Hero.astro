@@ -1,12 +1,9 @@
 ---
 import Container from "../layout/Container.astro";
-import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
 import CtaButtons, {
   type Props as CtaButtonsProps,
 } from "../ui/CtaButtons.astro";
-
-type A = CtaButtonsProps["size"];
 
 export interface Props {
   title: string;
@@ -36,9 +33,9 @@ const backgroundClasses = {
 <section class={`${backgroundClasses[background]} ${className}`}>
   <Container size="lg" padding="2xl">
     <div class="text-center max-w-4xl mx-auto">
-      <Heading as="h1" variant="hero" color="white" class="mb-6">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
         {title}
-      </Heading>
+      </h1>
 
       <Text variant="lead" size="xl" color="white" class="text-blue-100 mb-8">
         {description}
