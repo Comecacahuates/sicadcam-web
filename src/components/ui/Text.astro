@@ -1,52 +1,39 @@
 ---
-export interface Props {
-  as?: 'p' | 'span' | 'div';
-  variant?: 'body' | 'lead' | 'small' | 'caption' | 'body-light' | 'lead-light';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  color?: 'default' | 'muted' | 'light' | 'white' | 'blue';
-  class?: string;
+import type { HTMLAttributes } from "astro/types";
+
+type TextVariant = "body" | "lead" | "small";
+type TextColor = "default" | "muted" | "light" | "white" | "blue";
+
+export interface Props extends HTMLAttributes<"p"> {
+  variant?: TextVariant;
+  color?: TextColor;
 }
 
-const { 
-  as: Tag = 'p',
-  variant = 'body',
-  size,
-  color = 'default',
-  class: className = ''
+const {
+  variant = "body",
+  color = "default",
+  class: _class = "",
+  ...rest
 } = Astro.props;
 
-const variantClasses = {
-  body: 'text-base leading-relaxed',
-  lead: 'text-lg md:text-xl leading-relaxed font-medium',
-  small: 'text-sm leading-normal',
-  caption: 'text-xs leading-normal',
-  'body-light': 'text-base leading-relaxed font-light',
-  'lead-light': 'text-lg md:text-xl leading-relaxed font-light'
+const variantClasses: Record<TextVariant, string> = {
+  body: "text-base leading-relaxed",
+  lead: "text-lg md:text-xl leading-relaxed font-medium",
+  small: "text-sm leading-normal",
 };
 
-const sizeClasses = {
-  sm: 'text-sm',
-  md: 'text-base',
-  lg: 'text-lg',
-  xl: 'text-xl'
+const colorClasses: Record<TextColor, string> = {
+  default: "text-slate-700",
+  muted: "text-slate-600",
+  light: "text-slate-500",
+  white: "text-white",
+  blue: "text-blue-600",
 };
-
-const colorClasses = {
-  default: 'text-slate-700',
-  muted: 'text-slate-600',
-  light: 'text-slate-500',
-  white: 'text-white',
-  blue: 'text-blue-600'
-};
-
-// Size overrides variant if specified
-const finalClasses = [
-  size ? sizeClasses[size] : variantClasses[variant],
-  colorClasses[color],
-  className
-].filter(Boolean).join(' ');
 ---
 
-<Tag class={finalClasses}>
+<p
+  class:list={[variantClasses[variant], colorClasses[color], _class]}
+  {...rest}
+>
   <slot />
-</Tag>
+</p>
