@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type ResponsiveContainerSize = "sm" | "md" | "lg" | "xl" | "full";
+
+export interface Props extends HTMLAttributes<"div"> {
+  size?: ResponsiveContainerSize;
+}
+
+const { size = "lg", class: _class, ...rest } = Astro.props;
+
+const sizeClasses: Record<ResponsiveContainerSize, string> = {
+  sm: "max-w-3xl",
+  md: "max-w-5xl",
+  lg: "max-w-7xl",
+  xl: "max-w-screen-xl",
+  full: "max-w-none",
+};
+---
+
+<div class:list={[`w-full mx-auto`, _class, sizeClasses[size]]} {...rest}>
+  <slot />
+</div>
