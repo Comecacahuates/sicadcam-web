@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Background = "white" | "gray" | "blue" | "green" | "dark";
+
+export interface Props extends HTMLAttributes<"div"> {
+  background?: Background;
+}
+
+const { background = "white", class: _class = "", ...rest } = Astro.props;
+
+const backgroundClasses: Record<Background, string> = {
+  white: "bg-white",
+  gray: "bg-slate-100",
+  blue: "bg-blue-600 text-white",
+  green: "bg-green-600 text-white",
+  dark: "bg-slate-900 text-white",
+};
+---
+
+<div class:list={[backgroundClasses[background], _class]} {...rest}>
+  <slot />
+</div>
