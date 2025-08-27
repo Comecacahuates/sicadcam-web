@@ -1,32 +1,29 @@
 ---
-import Container from './Container.astro';
+import type { HTMLAttributes } from "astro/types";
+import ResponsiveContainer from "./ResponsiveContainer.astro";
+import PaddedContainer from "./PaddedContainer.astro";
 
-export interface Props {
-  background?: 'white' | 'gray' | 'blue' | 'green' | 'dark' | 'transparent';
-  containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-  class?: string;
+type Background = "white" | "gray" | "blue" | "green" | "dark";
+
+export interface Props extends HTMLAttributes<"section"> {
+  background?: Background;
 }
 
-const { 
-  background = 'transparent',
-  containerSize = 'lg',
-  padding = 'md',
-  class: className = '' 
-} = Astro.props;
+const { background = "white", class: _class = "", ...rest } = Astro.props;
 
-const backgroundClasses = {
-  white: 'bg-white',
-  gray: 'bg-slate-100',
-  blue: 'bg-blue-600 text-white',
-  green: 'bg-green-600 text-white',
-  dark: 'bg-slate-900 text-white',
-  transparent: ''
+const backgroundClasses: Record<Background, string> = {
+  white: "bg-white",
+  gray: "bg-slate-100",
+  blue: "bg-blue-600 text-white",
+  green: "bg-green-600 text-white",
+  dark: "bg-slate-900 text-white",
 };
 ---
 
-<section class={`${backgroundClasses[background]} ${className}`}>
-  <Container size={containerSize} padding={padding}>
-    <slot />
-  </Container>
+<section class:list={[backgroundClasses[background], _class]} {...rest}>
+  <ResponsiveContainer>
+    <PaddedContainer paddingY="4xl">
+      <slot />
+    </PaddedContainer>
+  </ResponsiveContainer>
 </section>
