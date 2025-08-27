@@ -1,73 +1,72 @@
 ---
-import Section from '../layout/Section.astro';
-import TwoColumn from './TwoColumn.astro';
-import Heading from '../ui/Heading.astro';
-import Text from '../ui/Text.astro';
-import Button from '../ui/Button.astro';
-import ButtonGroup from '../ui/ButtonGroup.astro';
+import Section from "../layout/Section.astro";
+import TwoColumn from "./TwoColumn.astro";
+import Text from "../ui/Text.astro";
+import CtaButtons, {
+  type Props as CtaButtonsProps,
+} from "../ui/CtaButtons.astro";
 
 export interface Props {
   title: string;
   leadText?: string;
   imageSrc: string;
   imageAlt: string;
-  imagePosition?: 'left' | 'right';
+  imagePosition?: "left" | "right";
   imageClass?: string;
-  primaryButton?: {
-    text: string;
-    href: string;
-    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white' | 'white-outline';
-  };
-  secondaryButton?: {
-    text: string;
-    href: string;
-    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white' | 'white-outline';
-  };
-  background?: 'white' | 'gray' | 'blue' | 'dark';
-  padding?: 'sm' | 'md' | 'lg' | 'xl';
-  titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
+  primaryButton?: CtaButtonsProps["primaryCta"];
+  secondaryButton?: CtaButtonsProps["secondaryCta"];
+  background?: "white" | "gray" | "blue" | "dark";
+  padding?: "sm" | "md" | "lg" | "xl";
   class?: string;
 }
 
-const { 
+const {
   title,
   leadText,
   imageSrc,
   imageAlt,
-  imagePosition = 'right',
-  imageClass = '',
+  imagePosition = "right",
+  imageClass = "",
   primaryButton,
   secondaryButton,
-  background = 'white',
-  padding = 'lg',
-  titleLevel = 'h2',
-  titleVariant = 'section',
-  class: className = ''
+  background = "white",
+  padding = "lg",
+  class: className = "",
 } = Astro.props;
 
 // Define color schemes for different backgrounds
-const colorSchemes = {
+type ColorScheme = {
+  titleColor: string;
+  leadColor: string;
+  leadClass: string;
+  theme: CtaButtonsProps["theme"];
+};
+
+const colorSchemes: Record<string, ColorScheme> = {
   white: {
-    titleColor: 'default',
-    leadColor: 'muted',
-    leadClass: ''
+    titleColor: "text-slate-900",
+    leadColor: "muted",
+    leadClass: "",
+    theme: "light",
   },
   gray: {
-    titleColor: 'default',
-    leadColor: 'muted',
-    leadClass: ''
+    titleColor: "text-slate-900",
+    leadColor: "muted",
+    leadClass: "",
+    theme: "light",
   },
   blue: {
-    titleColor: 'white',
-    leadColor: 'white',
-    leadClass: 'text-blue-100'
+    titleColor: "text-white",
+    leadColor: "white",
+    leadClass: "text-blue-100",
+    theme: "dark",
   },
   dark: {
-    titleColor: 'white',
-    leadColor: 'white',
-    leadClass: 'text-slate-300'
-  }
+    titleColor: "text-white",
+    leadColor: "white",
+    leadClass: "text-slate-300",
+    theme: "dark",
+  },
 };
 
 const scheme = colorSchemes[background];
@@ -81,51 +80,38 @@ const scheme = colorSchemes[background];
     imageClass={imageClass}
   >
     <div slot="content">
-      <Heading 
-        as={titleLevel} 
-        variant={titleVariant} 
-        color={scheme.titleColor}
-        class="mb-6"
-      >
+      <h2 class={`text-3xl md:text-4xl font-bold mb-6 ${scheme.titleColor}`}>
         {title}
-      </Heading>
-      
-      {leadText && (
-        <Text 
-          variant="lead" 
-          color={scheme.leadColor}
-          class={`mb-6 ${scheme.leadClass}`}
-        >
-          {leadText}
-        </Text>
-      )}
-      
+      </h2>
+
+      {
+        leadText && (
+          <Text
+            variant="lead"
+            color={scheme.leadColor}
+            class={`mb-6 ${scheme.leadClass}`}
+          >
+            {leadText}
+          </Text>
+        )
+      }
+
       <!-- Body content slot for flexible content -->
       <div class="mb-8">
         <slot />
       </div>
-      
+
       <!-- Buttons -->
-      {(primaryButton || secondaryButton) && (
-        <ButtonGroup alignment="start">
-          {primaryButton && (
-            <Button 
-              href={primaryButton.href} 
-              variant={primaryButton.variant || 'primary'}
-            >
-              {primaryButton.text}
-            </Button>
-          )}
-          {secondaryButton && (
-            <Button 
-              href={secondaryButton.href} 
-              variant={secondaryButton.variant || 'outline'}
-            >
-              {secondaryButton.text}
-            </Button>
-          )}
-        </ButtonGroup>
-      )}
+      {
+        primaryButton && (
+          <CtaButtons
+            primaryCta={primaryButton}
+            secondaryCta={secondaryButton}
+            alignment="start"
+            theme={scheme.theme}
+          />
+        )
+      }
     </div>
   </TwoColumn>
 </Section>
