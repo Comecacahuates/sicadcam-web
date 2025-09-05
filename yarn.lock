@@ -3869,6 +3869,7 @@ __metadata:
     "@tailwindcss/vite": "npm:^4.1.11"
     astro: "npm:^5.12.9"
     tailwindcss: "npm:^4.1.11"
+    ts-pattern: "npm:^5.8.0"
   languageName: unknown
   linkType: soft
 
@@ -4091,6 +4092,13 @@ __metadata:
   version: 2.2.0
   resolution: "trough@npm:2.2.0"
   checksum: 10c0/58b671fc970e7867a48514168894396dd94e6d9d6456aca427cc299c004fe67f35ed7172a36449086b2edde10e78a71a284ec0076809add6834fb8f857ccb9b0
+  languageName: node
+  linkType: hard
+
+"ts-pattern@npm:^5.8.0":
+  version: 5.8.0
+  resolution: "ts-pattern@npm:5.8.0"
+  checksum: 10c0/0e41006a8de7490c7edbba36c095550cd4b0e334247f9e76cddbdaadea4bcdc479763fb403a787db19bb83480c02fe6ea0e9799ceaaba0573acbe31e341ab947
   languageName: node
   linkType: hard
 
