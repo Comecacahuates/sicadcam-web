@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 
 type TextVariant = "body" | "lead" | "small";
-type TextColor = "default" | "muted" | "light" | "white" | "blue";
+type TextColor = "none" | "default" | "muted" | "light" | "white" | "blue";
 
 export interface Props extends HTMLAttributes<"p"> {
   variant?: TextVariant;
@@ -11,7 +11,7 @@ export interface Props extends HTMLAttributes<"p"> {
 
 const {
   variant = "body",
-  color = "default",
+  color = "none",
   class: _class = "",
   ...rest
 } = Astro.props;
@@ -23,6 +23,7 @@ const variantClasses: Record<TextVariant, string> = {
 };
 
 const colorClasses: Record<TextColor, string> = {
+  none: "",
   default: "text-slate-700",
   muted: "text-slate-600",
   light: "text-slate-500",

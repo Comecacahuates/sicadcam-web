@@ -16,6 +16,8 @@ import Button from "../components/ui/Button.astro";
 import ButtonGroup from "../components/ui/ButtonGroup.astro";
 import Text from "../components/ui/Text.astro";
 import Heading from "../components/ui/Heading.astro";
+import BackgroundColorContainer from "../components/background/BackgroundColorContainer.astro";
+import BackgroundImageContainer from "../components/background/BackgroundImageContainer.astro";
 import "../styles/global.css";
 
 // Industries data with images
@@ -99,86 +101,89 @@ const industries = [
   />
 
   <!-- Experience Section -->
-  <Section background="gray" padding="lg">
-    <SectionHeader
-      title="Nuestra Trayectoria y Experiencia"
-      description="Con más de tres décadas de experiencia en ingeniería y manufactura, nos hemos establecido como líderes en la industria CAD-CAM."
-      spacing="md"
-    />
-
-    <CardGrid columns="3">
-      <StatCard
-        stat="30+"
-        title="Años de Experiencia"
-        description="Décadas de experiencia en ingeniería y manufactura digital"
+  <BackgroundColorContainer backgroundColor="gray">
+    <Section>
+      <SectionHeader
+        title="Nuestra Trayectoria y Experiencia"
+        description="Con más de tres décadas de experiencia en ingeniería y manufactura, nos hemos establecido como líderes en la industria CAD-CAM."
       />
 
-      <StatCard
-        stat="desde 2002"
-        title="Distribuidores Oficiales"
-        description="Distribuidores oficiales de Rhinoceros y Authorized Rhino Trainers certificados"
-      />
+      <CardGrid columns="3">
+        <StatCard
+          stat="30+"
+          title="Años de Experiencia"
+          description="Décadas de experiencia en ingeniería y manufactura digital"
+        />
 
-      <StatCard
-        stat="2004"
-        title="Capacitación Especializada"
-        description="Impartiendo capacitación en Rhinoceros y RhinoCAM a profesionales"
-      />
-    </CardGrid>
-  </Section>
+        <StatCard
+          stat="desde 2002"
+          title="Distribuidores Oficiales"
+          description="Distribuidores oficiales de Rhinoceros y Authorized Rhino Trainers certificados"
+        />
+
+        <StatCard
+          stat="2004"
+          title="Capacitación Especializada"
+          description="Impartiendo capacitación en Rhinoceros y RhinoCAM a profesionales"
+        />
+      </CardGrid>
+    </Section>
+  </BackgroundColorContainer>
 
   <!-- Section Separator -->
-  <SectionSeparator
-    backgroundImage="https://placehold.co/1920x600?text=CAD+CAM+Workshop"
-    height="lg"
-    overlay="dark"
-    overlayOpacity="40"
-    position="center"
-    withContent={true}
-    title="Tecnología de Vanguardia"
-    description="Equipos de fabricación digital de última generación para proyectos de alta precisión"
-  />
+  <BackgroundImageContainer
+    src="https://placehold.co/1920x600?text=CAD+CAM+Workshop"
+    overlay={true}
+    overlayColor="black"
+    overlayOpacity="30"
+  >
+    <SectionSeparator
+      title="Tecnología de Vanguardia"
+      description="Equipos de fabricación digital de última generación para proyectos de alta precisión"
+    />
+  </BackgroundImageContainer>
 
   <!-- Services Section -->
-  <Section background="white" padding="lg" id="servicios">
-    <SectionHeader
-      title="Nuestra Oferta"
-      description="Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la producción y la capacitación."
-      spacing="md"
-    />
-
-    <CardGrid columns="3">
-      <ContentCard
-        title="Soluciones de Software CAD/CAM"
-        description="Ofrecemos una selección de software líder para diseño y fabricación digital, incluyendo Rhinoceros, Grasshopper, RhinoCAM y Mesh2Surface."
-        imageSrc="https://placehold.co/600x400?text=Software+CAD/CAM"
-        imageAlt="Software CAD/CAM"
-        buttonText="Explorar Software"
-        buttonHref="/soluciones-de-software-cad-cam"
-        variant="default"
+  <BackgroundColorContainer backgroundColor="white">
+    <Section id="servicios">
+      <SectionHeader
+        title="Nuestra Oferta"
+        description="Ofrecemos soluciones integrales desde el concepto y el diseño, hasta la producción y la capacitación."
       />
 
-      <ContentCard
-        title="Servicios de Fabricación Digital"
-        description="Transformamos sus ideas en realidad con servicios de fabricación digital de vanguardia, incluyendo modelado 3D, maquinado CNC e impresión 3D."
-        imageSrc="https://placehold.co/600x400?text=Fabricación+Digital"
-        imageAlt="Servicios de Fabricación Digital"
-        buttonText="Conocer Servicios"
-        buttonHref="/servicios-de-fabricacion-digital"
-        variant="default"
-      />
+      <CardGrid columns="3">
+        <ContentCard
+          title="Soluciones de Software CAD/CAM"
+          description="Ofrecemos una selección de software líder para diseño y fabricación digital, incluyendo Rhinoceros, Grasshopper, RhinoCAM y Mesh2Surface."
+          imageSrc="https://placehold.co/600x400?text=Software+CAD/CAM"
+          imageAlt="Software CAD/CAM"
+          buttonText="Explorar Software"
+          buttonHref="/soluciones-de-software-cad-cam"
+          variant="default"
+        />
 
-      <ContentCard
-        title="Cursos de Capacitación"
-        description="Potencie sus habilidades con cursos especializados en modelado 3D con Rhinoceros, diseño paramétrico con Grasshopper y maquinado CNC."
-        imageSrc="https://placehold.co/600x400?text=Cursos+de+Capacitación"
-        imageAlt="Cursos de Capacitación"
-        buttonText="Ver Cursos"
-        buttonHref="/cursos-de-capacitacion"
-        variant="default"
-      />
-    </CardGrid>
-  </Section>
+        <ContentCard
+          title="Servicios de Fabricación Digital"
+          description="Transformamos sus ideas en realidad con servicios de fabricación digital de vanguardia, incluyendo modelado 3D, maquinado CNC e impresión 3D."
+          imageSrc="https://placehold.co/600x400?text=Fabricación+Digital"
+          imageAlt="Servicios de Fabricación Digital"
+          buttonText="Conocer Servicios"
+          buttonHref="/servicios-de-fabricacion-digital"
+          variant="default"
+        />
+
+        <ContentCard
+          title="Cursos de Capacitación"
+          description="Potencie sus habilidades con cursos especializados en modelado 3D con Rhinoceros, diseño paramétrico con Grasshopper y maquinado CNC."
+          imageSrc="https://placehold.co/600x400?text=Cursos+de+Capacitación"
+          imageAlt="Cursos de Capacitación"
+          buttonText="Ver Cursos"
+          buttonHref="/cursos-de-capacitacion"
+          variant="default"
+        />
+      </CardGrid>
+    </Section>
+  </BackgroundColorContainer>
 
   <!-- Commitment Section -->
   <ContentSection
@@ -203,27 +208,31 @@ const industries = [
   </ContentSection>
 
   <!-- Industries Section -->
-  <Section background="gray">
-    <SectionHeader
-      title="Industrias que Atendemos"
-      description="Profesionales de diversas industrias confían en nuestras soluciones para sus proyectos más exigentes"
-    />
+  <BackgroundColorContainer backgroundColor="gray">
+    <Section>
+      <SectionHeader
+        title="Industrias que Atendemos"
+        description="Profesionales de diversas industrias confían en nuestras soluciones para sus proyectos más exigentes"
+      />
 
-    <IndustryGrid industries={industries} columns="3" imageAspect="video" />
-  </Section>
+      <IndustryGrid industries={industries} columns="3" imageAspect="video" />
+    </Section>
+  </BackgroundColorContainer>
 
   <!-- CTA Section -->
-  <CtaSection
-    title="¿Listo para comenzar su proyecto?"
-    description="Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas del concepto a la realidad."
-    primaryButton={{
-      text: "Contactar",
-      href: "/contacto",
-    }}
-    secondaryButton={{
-      text: "Ver Cursos",
-      href: "/cursos-de-capacitacion",
-    }}
-    background="dark"
-  />
+  <BackgroundColorContainer backgroundColor="blue">
+    <CtaSection
+      title="¿Listo para comenzar su proyecto?"
+      description="Contáctenos hoy para discutir cómo podemos ayudarle a llevar sus ideas del concepto a la realidad."
+      primaryButton={{
+        text: "Contactar",
+        href: "/contacto",
+      }}
+      secondaryButton={{
+        text: "Ver Cursos",
+        href: "/cursos-de-capacitacion",
+      }}
+      background="blue"
+    />
+  </BackgroundColorContainer>
 </Layout>

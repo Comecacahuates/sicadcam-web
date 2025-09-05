@@ -1,79 +1,37 @@
 ---
-import Heading from '../ui/Heading.astro';
-import Text from '../ui/Text.astro';
+import type { HTMLAttributes } from "astro/types";
+import Text from "../ui/Text.astro";
 
-export interface Props {
+type TextColor = "default" | "white" | "muted";
+
+export interface Props extends HTMLAttributes<"div"> {
   title: string;
   description?: string;
-  spacing?: 'sm' | 'md' | 'lg' | 'xl';
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
-  alignment?: 'left' | 'center' | 'right';
-  titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
-  titleColor?: 'default' | 'white' | 'muted';
-  descriptionColor?: 'default' | 'white' | 'muted';
-  class?: string;
+  textColor?: TextColor;
 }
 
 const {
   title,
   description,
-  spacing = 'lg',
-  maxWidth = '3xl',
-  alignment = 'center',
-  titleLevel = 'h2',
-  titleVariant = 'section',
-  titleColor = 'default',
-  descriptionColor = 'muted',
-  class: className = ''
+  textColor: titleColor = "default",
+  class: _class = "",
+  ...rest
 } = Astro.props;
 
-const spacingClasses = {
-  sm: 'my-8',
-  md: 'my-12',
-  lg: 'my-16',
-  xl: 'my-20'
+const textColorClasses = {
+  default: "text-slate-900",
+  white: "text-white",
+  muted: "text-slate-600",
 };
-
-const alignmentClasses = {
-  left: 'text-left',
-  center: 'text-center',
-  right: 'text-right'
-};
-
-const maxWidthClasses = {
-  sm: 'max-w-sm',
-  md: 'max-w-md',
-  lg: 'max-w-lg',
-  xl: 'max-w-xl',
-  '2xl': 'max-w-2xl',
-  '3xl': 'max-w-3xl',
-  '4xl': 'max-w-4xl',
-  '5xl': 'max-w-5xl',
-  '6xl': 'max-w-6xl',
-  '7xl': 'max-w-7xl'
-};
-
-const containerClass = alignment === 'center' ? 'mx-auto' : '';
 ---
 
-<div class={`${alignmentClasses[alignment]} ${spacingClasses[spacing]} ${className}`}>
-  <Heading
-    as={titleLevel}
-    variant={titleVariant}
-    color={titleColor}
-    class="mb-4"
-  >
+<div
+  class:list={["text-center", textColorClasses[titleColor], _class]}
+  {...rest}
+>
+  <h2 class={`text-3xl md:text-4xl font-bold mb-4`}>
     {title}
-  </Heading>
+  </h2>
 
-  {description && (
-    <Text
-      variant="lead"
-      color={descriptionColor}
-      class={`${maxWidthClasses[maxWidth]} ${containerClass}`}
-    >
-      {description}
-    </Text>
-  )}
+  {description && <Text variant="lead">{description}</Text>}
 </div>

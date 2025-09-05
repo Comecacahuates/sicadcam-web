@@ -2,22 +2,16 @@
 import type { HTMLAttributes } from "astro/types";
 import ResponsiveContainer from "./ResponsiveContainer.astro";
 import PaddedContainer from "./PaddedContainer.astro";
-import BackgroundColorContainer, { type Props as BackgroundColorContainerProps } from "../background/BackgroundColorContainer.astro";
 
+export interface Props extends HTMLAttributes<"section"> {}
 
-export interface Props extends HTMLAttributes<"section"> {
-  background?: BackgroundColorContainerProps['backgroundColor']
-}
-
-const { background = "white", class: _class = "", ...rest } = Astro.props;
+const { class: _class = "", ...rest } = Astro.props;
 ---
 
 <section class:list={[_class]} {...rest}>
-  <BackgroundColorContainer backgroundColor={background}>
-    <ResponsiveContainer>
-      <PaddedContainer paddingY="4xl">
-        <slot />
-      </PaddedContainer>
-    </ResponsiveContainer>
-  </BackgroundColorContainer>
+  <ResponsiveContainer>
+    <PaddedContainer paddingY="4xl">
+      <slot />
+    </PaddedContainer>
+  </ResponsiveContainer>
 </section>

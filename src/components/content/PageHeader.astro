@@ -1,5 +1,5 @@
 ---
-import Container from "../layout/Container.astro";
+import ResponsiveContainer from "../layout/ResponsiveContainer.astro";
 import Breadcrumbs from "../ui/Breadcrumbs.astro";
 import Text from "../ui/Text.astro";
 import Heading from "../ui/Heading.astro";
@@ -49,7 +49,7 @@ const isDarkBackground = background === "blue" || background === "green";
 ---
 
 <section class={`${backgroundClasses[background]} ${className}`}>
-  <Container size="lg" padding={paddingClass}>
+  <ResponsiveContainer size="lg" padding={paddingClass}>
     <div class="max-w-4xl">
       <!-- Breadcrumbs -->
       {
@@ -105,5 +105,5 @@ const isDarkBackground = background === "blue" || background === "green";
         theme={isDarkBackground ? "dark" : "light"}
       />
     </div>
-  </Container>
+  </ResponsiveContainer>
 </section>

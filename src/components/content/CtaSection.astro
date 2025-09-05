@@ -1,10 +1,26 @@
 ---
-import Section from "../layout/Section.astro";
+import Section, { type Props as SectionProps } from "../layout/Section.astro";
 import SectionHeader from "./SectionHeader.astro";
 import Button from "../ui/Button.astro";
 import ButtonGroup from "../ui/ButtonGroup.astro";
 
-export interface Props {
+type Themes = "blue" | "dark" | "gray" | "white";
+type TextColor = "default" | "white" | "muted";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "ghost"
+  | "white"
+  | "white-outline";
+type ColorScheme = {
+  titleColor: TextColor;
+  descriptionColor: TextColor;
+  primaryVariant: ButtonVariant;
+  secondaryVariant: ButtonVariant;
+};
+
+export interface Props extends SectionProps {
   title: string;
   description: string;
   primaryButton: {
@@ -15,12 +31,21 @@ export interface Props {
     text: string;
     href: string;
   };
-  background?: "blue" | "dark" | "gray" | "white" | "green";
+  background?: Themes;
   padding?: "sm" | "md" | "lg" | "xl";
-  titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  titleVariant?: 'hero' | 'section' | 'subsection' | 'card';
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
-  class?: string;
+  titleLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  titleVariant?: "hero" | "section" | "subsection" | "card";
+  maxWidth?:
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | "6xl"
+    | "7xl";
 }
 
 const {
@@ -33,18 +58,13 @@ const {
   titleLevel = "h2",
   titleVariant = "section",
   maxWidth = "2xl",
-  class: className = "",
+  class: _class,
+  ...rest
 } = Astro.props;
 
 // Define color schemes for different backgrounds
-const colorSchemes = {
+const colorSchemes: Record<Themes, ColorScheme> = {
   blue: {
-    titleColor: "white",
-    descriptionColor: "white",
-    primaryVariant: "white",
-    secondaryVariant: "white-outline",
-  },
-  green: {
     titleColor: "white",
     descriptionColor: "white",
     primaryVariant: "white",
@@ -74,19 +94,14 @@ const colorSchemes = {
 const scheme = colorSchemes[background] || colorSchemes.blue;
 ---
 
-<Section background={background} padding={padding} class={className}>
+<Section class={_class} {...rest}>
   <div class="text-center">
     <SectionHeader
       title={title}
       description={description}
-      titleLevel={titleLevel}
-      titleVariant={titleVariant}
-      titleColor={scheme.titleColor}
-      descriptionColor={scheme.descriptionColor}
-      maxWidth={maxWidth}
-      spacing="md"
+      textColor={scheme.titleColor}
     />
-    
+
     <ButtonGroup alignment="center">
       <Button
         href={primaryButton.href}
