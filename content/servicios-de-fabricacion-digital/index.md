@@ -1,35 +1,35 @@
 ## Servicios de fabricación digital
 
-Dé vida a sus proyectos con nuestros servicios de fabricación digital. Ofrecemos soluciones precisas y eficientes para transformar sus ideas del concepto a la realidad.
+Nuestros servicios de fabricación digital combinan tecnología de vanguardia, precisión milimétrica y expertise técnico para ofrecerle soluciones integrales, desde el prototipo hasta la producción en serie. Acelere su tiempo de mercado con resultados que superan expectativas.
 
 ### Maquinado CNC
 
 Piezas impecables para demandas técnicas exigentes.
 
-Convierta sus diseños CAD en componentes robustos y de tolerancias milimétricas. Ideal para prototipos funcionales, moldes, utillajes y series de producción. Maquinamos una amplia gama de materiales metálicos y plásticos de ingeniería para cumplir con los requisitos más desafiantes.
+Conviertimos tus diseños CAD en componentes robustos y de tolerancias milimétricas. Ideal para piezas funcionales, moldes y producción de cortos a medianos volúmenes en materiales como aluminio, acero inoxidable, latón y plásticos.
 
 [Conocer más >](./maquinado-cnc.md)
 
 ### Impresión 3D
 
-Rapidez y complejidad geométrica sin límites.
+Prototipos ultrarrápidos y piezas finales de alto desempeño.
 
-Materialice sus conceptos en horas, no en semanas. Perfecta para prototipos rápidos, piezas personalizadas, herramientas de fabricación y geometrías intrincadas que son imposibles de lograr con otros métodos.
+Supere los límites del diseño con nuestra amplia gama de tecnologías aditivas (FDM, SLA, SLS). Reduzca costos y plazos de desarrollo, valide conceptos y cree geometrías imposibles con materiales resistentes, flexibles o de alta definición.
 
 [Descubra la Impresión 3D >](./impresion-3d.md)
 
 ### Corte láser
 
-Precisión absoluta para creatividad sin fronteras.
+Corte con exactitud y personalización sin límites.
 
-Corte y grabe diseños complejos con un acabado limpio y perfecto en minutos. Solución perfecta para señalética, maquetas arquitectónicas, detalles personalizados, packaging y electrónica.
+Nuestros láseres de CO2 y fibra cortan y graban con una fineza excepcional en acrílico, MDF, textiles, metales y más. Perfecto para crear displays, maquetas arquitectónicas, componentes electrónicos y regalos corporativos con un acabado limpio y profesional.
 
 [Ver servicio de corte >](corte-laser)
 
 ### Escaneo 3D
 
-Digitalice el mundo físico con fidelidad absoluta.
+Capture el mundo físico con fidelidad digital.
 
-Capture cualquier objeto, pieza o escenario en un modelo digital 3D listo para rediseñar, mejorar, reparar o archivar. Essential para control de calidad, personalización, patrimonio cultural y desarrollo de productos.
+Digitalizamos cualquier objeto, por complejo que sea, para generar un modelo 3D perfecto. Servicio clave para control de calidad, ingeniería inversa, personalización de piezas o conservación de patrimonio. Obtenga una base digital exacta para modificar, reproducir o mejorar cualquier diseño.
 
 [Explorar escaneo 3D >](escaneo-3d)
